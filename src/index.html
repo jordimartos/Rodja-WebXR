@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Rodja</title>
+    
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
+       <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+         <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>   
+    <script src="https://unpkg.com/aframe-controller-cursor-component@0.2.7/dist/aframe-controller-cursor-component.min.js"></script>
+  <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script> 
+   <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
+ 
+  
+  
+</head>
+<body>
+    <script>      
+  
+    
+  </script>
+    <a-scene physics >
+      <a-assets>
+     
+      </a-assets>
+   
+   
+      <!----------------------------------------------------------------------->
+     <a-entity oculus-touch-controls="hand: left"></a-entity>
+     <a-entity oculus-touch-controls="hand: right" controller-cursor raycaster="objects: .coins"  ></a-entity>
+      
+      <a-camera id="cam" >
+        
+           
+    
+      </a-camera>
+      
+          <a-plane id ="ground" color = "#3248ff" scale = "15 15 15" rotation = "-90 0 0" position = "0 -0.2 0"   static-body>
+          
+      </a-plane>
+      
+      <a-sphere id="npc" color="yellow" radius="0.25"  position = "0.2 0 -2"  npc-component></a-sphere>
+      <a-curve id="track1">
+        <a-box  scale = "0.01 0.01 0.01"  position = "0 0 -2"  curve-point visible="false" ></a-box>
+        <a-box  scale = "0.01 0.01 0.01"   position = "-1 0 0"   curve-point visible = "false"></a-box>
+       
+         <a-box id ="1" scale = "0.25 0.25 0.25"  position = "0 0 2" coin-component="canStart: true"  curve-point class="coins"></a-box>
+      </a-curve >
+       
+      <a-curve id= "track2" >
+        <a-box  scale = "0.01 0.01 0.01"  position = "0 0 2"   curve-point visible="false"></a-box>
+      <a-box  scale = "0.01 0.01 0.01"   position = "2 0 1"   curve-point visible = "false" ></a-box>
+        <a-box id ="2" scale = "0.25 0.25 0.25"  position = "3.5 0 -1"  curve-point class="coins"></a-box>
+      </a-curve>
+       <a-curve id="track3">
+      <a-box  scale = "0.01 0.01 0.01"  position = "3.5 0 -1"  curve-point visible="false"></a-box>
+       <a-box  scale = "0.01 0.01 0.01"  position = "2 0 -2"   curve-point visible="false" ></a-box>
+         <a-box id ="3" scale = "0.25 0.25 0.25"  position = "0.2 0 -2"   curve-point class="coins"></a-box>
+      </a-curve>
+      
+   <a-sky></a-sky>
+     
+ 
+<!--<a-gltf-model id="trex" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2FTRex.glb?v=1607338635800" scale="0.2 0.2 0.2" position="0.5 0.5 -1" gltf-model="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2FTRex.glb?v=1607338635800" animation-mixer="timeScale:0;loop:repeat" flower-finished ></a-gltf-model>  -->  </a-scene>
+</body>
+</html>

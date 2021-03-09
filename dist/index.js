@@ -232,14 +232,6 @@ var CoinComponent = /** @class */function (_super) {
         var el = this.el;
         var data = this.data;
         var npc = document.getElementById('npc');
-        /*
-           if(data.canStart)
-           {
-               moveToNextCoin(npc , el);
-               data.canStart = false;
-              
-           }
-        */
         el.addEventListener('mousedown', function () {
             if (data.canStart) {
                 moveToNextCoin(npc, el);

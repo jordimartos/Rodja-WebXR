@@ -1,13 +1,14 @@
 {
-  "name": "vrapeutic-webxr-boilerplate",
+  "name": "vrapeutic-webxr-rodja",
   "version": "0.0.1",
-  "main": "src/index.ts",
+  "main": "dist/indexnpm.html",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js  --progress --profile --color --display-error-details --display-cached --bail",
-    "start-dev": "live-server --no-browser",
+    "start-dev": " live-server --open=/dist --no-browser",
     "lint": "gts lint **/*.ts",
     "clean": "gts clean **/*.ts",
-    "fix": "gts fix **/*.ts"
+    "fix": "gts fix **/*.ts",
+    "dev":"live-server --port=3000 --open=/dist"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.2.1",

@@ -39,7 +39,6 @@ The NPC has two options: either a boy or a girl.
 could, without getting distracted by distractions around them, or by the movement
 of the jewels themselves.
 
--
 ### Statistics:
 
 -In progress

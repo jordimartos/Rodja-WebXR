@@ -30,7 +30,7 @@ The player controls the pointer only by moving their head around as the
 pointer should express their eyes’ center’s direction.
 ### NPC:
 
-An NPC plays along the player to encourage them and tell them the rules
+- An NPC plays along the player to encourage them and tell them the rules
 of the game.
 The NPC has two options: either a boy or a girl. 
 ### Goals:
@@ -41,7 +41,7 @@ of the jewels themselves.
 
 ### Statistics:
 
--In progress
+- In progress
 ### Technologies Used
 
 - [A-Frame](https://aframe.io/)

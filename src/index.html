@@ -34,7 +34,9 @@
       <!----------------------------------------------------------------------->
      <a-entity oculus-touch-controls="hand: left"></a-entity>
      <a-entity oculus-touch-controls="hand: right" controller-cursor raycaster="objects: .coins"></a-entity>
-      
+      <!-----
+     <a-entity cursor="rayOrigin: mouse" grab></a-entity>
+      --->
       <a-camera id="cam" >
         
            
@@ -45,7 +47,7 @@
           
       </a-plane>
       
-      <a-sphere id="npc" color="yellow" radius="0.25"  position = "0 0.2 -3.80892"   npc-component></a-sphere>
+      <a-sphere id="npc" color="yellow" radius="0.25"  position = "0 0.2 -3.80892"   ></a-sphere>
       <a-curve id="track1">
         <a-box scale="0.02 0.02 0.02" position="0 0.2 -3.80892" curve-point="" visible="false" ></a-box>
         <a-box scale="0.02 0.02 0.02" position="-1.82874 0.2 -4.3307" curve-point="" visible="false" ></a-box>

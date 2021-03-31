@@ -232,9 +232,11 @@ var CoinComponent = /** @class */function (_super) {
         var el = this.el;
         var data = this.data;
         var npc = document.getElementById('npc');
+        //console.log(nextCoin)
         el.addEventListener('mousedown', function () {
             if (data.canStart) {
                 moveToNextCoin(npc, el);
+                data.canStart = false;
             }
         });
     };
@@ -256,9 +258,30 @@ function moveToNextCoin(npc_el, coin_el) {
     coin_el.setAttribute('coin-component', 'canStart', 'false');
     npc_el.setAttribute('alongpath', 'curve', '#track' + coinIndex);
     npc_el.setAttribute('alongpath', 'dur', '5000');
+    coinIndex++;
+    var nextCoin_el = document.getElementById(coinIndex.toString());
     if (coinIndex < 9) {
-        coinIndex++;
+        nextCoin_el.setAttribute('coin-component', 'canStart:true');
+        nextCoin_el.setAttribute('material', 'color:blue');
     }
+    /*
+           if(data.canStart)
+          {
+        
+        el.setAttribute("material","color","black");
+        player.setAttribute('alongpath','curve','#track'+window.index);
+        player.setAttribute('alongpath','dur','5000')
+        window.index ++;
+            if(window.index < 9)
+              {
+            nextCoin = document.getElementById(window.index.toString());
+            nextCoin.setAttribute('coin','canStart','true');
+            nextCoin.setAttribute('material','color','blue');
+            console.log(nextCoin);
+              }
+        data.canStart = false;
+          }
+       */
 }
 new CoinComponent().register();
 
@@ -307,10 +330,12 @@ var NPCComponent = /** @class */function (_super) {
         var nextCoin = document.getElementById(nextCoinIndex.toString());
         console.log('next coin ' + nextCoinIndex);
         el.addEventListener('movingended', function () {
-            if (nextCoinIndex <= coinMaxNumber) {
-                var nextCoin_1 = document.getElementById(nextCoinIndex.toString());
-                OnArriving(nextCoin_1);
-            }
+            /*
+            if(nextCoinIndex <= coinMaxNumber)
+            {
+              let nextCoin = document.getElementById(nextCoinIndex.toString());
+            OnArriving(nextCoin);
+            }*/
         });
     };
     NPCComponent.prototype.update = function () {};
@@ -324,10 +349,12 @@ var NPCComponent = /** @class */function (_super) {
 exports.NPCComponent = NPCComponent;
 function OnArriving(nextCoin_el) {
     console.log("npc arrived");
-    nextCoin_el.setAttribute('coin-component', 'canStart', 'true');
-    nextCoin_el.setAttribute('material', 'color', 'blue');
-    nextCoinIndex++;
-    console.log("next coin =" + nextCoinIndex);
+    /*
+      nextCoin_el.setAttribute('coin-component','canStart','true');
+          nextCoin_el.setAttribute('material','color','blue');
+      nextCoinIndex ++;
+      console.log("next coin ="+nextCoinIndex);
+      */
 }
 new NPCComponent().register();
 

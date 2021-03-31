@@ -235,6 +235,7 @@ var CoinComponent = /** @class */function (_super) {
         //console.log(nextCoin)
         el.addEventListener('mousedown', function () {
             if (data.canStart) {
+                console.log('mouseDown');
                 moveToNextCoin(npc, el);
                 data.canStart = false;
             }

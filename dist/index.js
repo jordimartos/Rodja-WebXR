@@ -256,7 +256,9 @@ function moveToNextCoin(npc_el, coin_el) {
     coin_el.setAttribute('coin-component', 'canStart', 'false');
     npc_el.setAttribute('alongpath', 'curve', '#track' + coinIndex);
     npc_el.setAttribute('alongpath', 'dur', '5000');
-    coinIndex++;
+    if (coinIndex < 9) {
+        coinIndex++;
+    }
 }
 new CoinComponent().register();
 

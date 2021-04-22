@@ -257,8 +257,8 @@ var CoinComponent = /** @class */function (_super) {
 exports.CoinComponent = CoinComponent;
 function moveToNextCoin(npc_el, coin_el) {
     console.log("npc :" + npc_el + " coin :" + coin_el);
+    console.log("hii");
     console.log("track" + coinIndex + window.track);
-    //
     coin_el.setAttribute('material', 'color', 'black');
     coin_el.setAttribute('coin-component', 'canStart', 'false');
     npc_el.setAttribute('alongpath', 'curve', '#track' + coinIndex.toString() + window.track);
@@ -267,7 +267,6 @@ function moveToNextCoin(npc_el, coin_el) {
     coinIndex++;
     nextCoin_el = document.getElementById(coinIndex.toString() + window.track);
     if (coinIndex < 9) {
-        nextCoin_el.setAttribute('coin-component', 'canStart:true');
         nextCoin_el.setAttribute('material', 'color:blue');
     }
 }
@@ -315,7 +314,26 @@ var gameManagerComponent = /** @class */function (_super) {
     }
     gameManagerComponent.prototype.init = function () {
         console.log('game manager');
-        window.track = "5";
+        var enviroment = sessionStorage.getItem('enviroment');
+        var enviroment_el;
+        var road_el;
+        var firstCoin;
+        try {
+            enviroment_el = document.getElementById(enviroment + '-el');
+            enviroment_el.setAttribute('visible', 'true');
+        } catch (_a) {
+            alert("enviroment not selected");
+        }
+        window.track = sessionStorage.getItem('road');
+        console.log('track selected =' + window.track);
+        try {
+            road_el = document.getElementById('road' + window.track + '-el');
+            road_el.setAttribute('visible', 'true');
+        } catch (_b) {
+            alert('road not selected');
+        }
+        firstCoin = document.getElementById('1' + window.track);
+        firstCoin.setAttribute('visible', 'true');
     };
     gameManagerComponent.prototype.update = function () {};
     gameManagerComponent.prototype.play = function () {};
@@ -370,15 +388,15 @@ var NPCComponent = /** @class */function (_super) {
     NPCComponent.prototype.init = function () {
         var el = this.el;
         var data = this.data;
-        var nextCoin = document.getElementById(nextCoinIndex.toString());
+        var startPos = document.getElementById('start' + window.track);
+        var nextCoin = document.getElementById(nextCoinIndex.toString() + window.track);
         console.log('next coin ' + nextCoinIndex);
+        el.setAttribute('position', startPos.getAttribute('position'));
+        console.log(startPos.getAttribute('position'));
+        console.log(el.getAttribute('position'));
         el.addEventListener('movingended', function () {
-            /*
-            if(nextCoinIndex <= coinMaxNumber)
-            {
-              let nextCoin = document.getElementById(nextCoinIndex.toString());
-            OnArriving(nextCoin);
-            }*/
+            nextCoin = document.getElementById(nextCoinIndex.toString() + window.track);
+            showNextCoin(nextCoin);
         });
     };
     NPCComponent.prototype.update = function () {};
@@ -390,14 +408,13 @@ var NPCComponent = /** @class */function (_super) {
     return NPCComponent;
 }(aframe_wrapper_1.ComponentWrapper);
 exports.NPCComponent = NPCComponent;
-function OnArriving(nextCoin_el) {
+function showNextCoin(nextCoin_el) {
     console.log("npc arrived");
-    /*
-      nextCoin_el.setAttribute('coin-component','canStart','true');
-          nextCoin_el.setAttribute('material','color','blue');
-      nextCoinIndex ++;
-      console.log("next coin ="+nextCoinIndex);
-      */
+    if (nextCoinIndex < 9) {
+        nextCoin_el.setAttribute('visible', 'true');
+        nextCoin_el.setAttribute('coin-component', 'canStart:true');
+        nextCoinIndex++;
+    }
 }
 new NPCComponent().register();
 

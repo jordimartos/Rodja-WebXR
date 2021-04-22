@@ -255,6 +255,8 @@ var CoinComponent = /** @class */function (_super) {
 exports.CoinComponent = CoinComponent;
 function moveToNextCoin(npc_el, coin_el) {
     console.log("npc :" + npc_el + " coin :" + coin_el);
+    console.log("coin index");
+    console.log("window track" + window.track);
     console.log("track" + coinIndex + window.track);
     coin_el.setAttribute('material', 'color', 'black');
     coin_el.setAttribute('coin-component', 'canStart', 'false');

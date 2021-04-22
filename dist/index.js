@@ -236,6 +236,8 @@ var CoinComponent = /** @class */function (_super) {
         el.addEventListener('mousedown', function () {
             if (data.canStart) {
                 console.log('mouseDown');
+                console.log('coin index =' + coinIndex);
+                console.log('track' + window.track);
                 moveToNextCoin(npc, el);
                 data.canStart = false;
             }
@@ -255,8 +257,6 @@ var CoinComponent = /** @class */function (_super) {
 exports.CoinComponent = CoinComponent;
 function moveToNextCoin(npc_el, coin_el) {
     console.log("npc :" + npc_el + " coin :" + coin_el);
-    console.log("coin index");
-    console.log("window track" + window.track);
     console.log("track" + coinIndex + window.track);
     coin_el.setAttribute('material', 'color', 'black');
     coin_el.setAttribute('coin-component', 'canStart', 'false');

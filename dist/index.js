@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -255,39 +255,78 @@ var CoinComponent = /** @class */function (_super) {
 exports.CoinComponent = CoinComponent;
 function moveToNextCoin(npc_el, coin_el) {
     console.log("npc :" + npc_el + " coin :" + coin_el);
+    console.log("track" + coinIndex + window.track);
     coin_el.setAttribute('material', 'color', 'black');
     coin_el.setAttribute('coin-component', 'canStart', 'false');
-    npc_el.setAttribute('alongpath', 'curve', '#track' + coinIndex);
+    npc_el.setAttribute('alongpath', 'curve', '#track' + coinIndex.toString() + window.track);
     npc_el.setAttribute('alongpath', 'dur', '5000');
+    var nextCoin_el;
     coinIndex++;
-    var nextCoin_el = document.getElementById(coinIndex.toString());
+    nextCoin_el = document.getElementById(coinIndex.toString() + window.track);
     if (coinIndex < 9) {
         nextCoin_el.setAttribute('coin-component', 'canStart:true');
         nextCoin_el.setAttribute('material', 'color:blue');
     }
-    /*
-           if(data.canStart)
-          {
-        
-        el.setAttribute("material","color","black");
-        player.setAttribute('alongpath','curve','#track'+window.index);
-        player.setAttribute('alongpath','dur','5000')
-        window.index ++;
-            if(window.index < 9)
-              {
-            nextCoin = document.getElementById(window.index.toString());
-            nextCoin.setAttribute('coin','canStart','true');
-            nextCoin.setAttribute('material','color','blue');
-            console.log(nextCoin);
-              }
-        data.canStart = false;
-          }
-       */
 }
 new CoinComponent().register();
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __extends = this && this.__extends || function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+            d.__proto__ = b;
+        } || function (d, b) {
+            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.gameManagerComponent = void 0;
+var aframe_wrapper_1 = __webpack_require__(0);
+var nextCoinIndex = 2;
+var coinMaxNumber = 3;
+window.track = window.track || {};
+var gameManagerComponent = /** @class */function (_super) {
+    __extends(gameManagerComponent, _super);
+    function gameManagerComponent() {
+        return _super.call(this, 'game-manager', {
+            canStart: {
+                type: 'boolean',
+                default: false
+            }
+        }) || this;
+    }
+    gameManagerComponent.prototype.init = function () {
+        console.log('game manager');
+        window.track = "5";
+    };
+    gameManagerComponent.prototype.update = function () {};
+    gameManagerComponent.prototype.play = function () {};
+    gameManagerComponent.prototype.pause = function () {};
+    gameManagerComponent.prototype.tick = function () {};
+    gameManagerComponent.prototype.remove = function () {};
+    gameManagerComponent.prototype.destroy = function () {};
+    return gameManagerComponent;
+}(aframe_wrapper_1.ComponentWrapper);
+exports.gameManagerComponent = gameManagerComponent;
+new gameManagerComponent().register();
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -360,21 +399,25 @@ function OnArriving(nextCoin_el) {
 new NPCComponent().register();
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CoinComponent = exports.NPCComponent = void 0;
-var npc_component_1 = __webpack_require__(2);
+exports.gameManagerComponent = exports.CoinComponent = exports.NPCComponent = void 0;
+var npc_component_1 = __webpack_require__(3);
 Object.defineProperty(exports, "NPCComponent", { enumerable: true, get: function () {
     return npc_component_1.NPCComponent;
   } });
 var coin_component_1 = __webpack_require__(1);
 Object.defineProperty(exports, "CoinComponent", { enumerable: true, get: function () {
     return coin_component_1.CoinComponent;
+  } });
+var game_manager_1 = __webpack_require__(2);
+Object.defineProperty(exports, "gameManagerComponent", { enumerable: true, get: function () {
+    return game_manager_1.gameManagerComponent;
   } });
 
 /***/ })

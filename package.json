@@ -8,7 +8,7 @@
     "lint": "gts lint **/*.ts",
     "clean": "gts clean **/*.ts",
     "fix": "gts fix **/*.ts",
-    "dev": "live-server --port=3000 --open=/dist"
+    "dev": "live-server --port=3000 --open=menu.html"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.2.1",

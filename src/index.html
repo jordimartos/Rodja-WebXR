@@ -17,7 +17,7 @@
  
   
   
-<script type="text/javascript" src="index.js"></script><script type="text/javascript" src="index.js"></script></head>
+<script type="text/javascript" src="index.js"></script><script type="text/javascript" src="index.js"></script><script type="text/javascript" src="index.js"></script></head>
 <body>
     <script>      
   
@@ -32,7 +32,7 @@
         <a-asset-item id="road3" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Froad3.glb?v=1619090332678"></a-asset-item>
         <a-asset-item id="road4" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Froad4.glb?v=1619090341360"></a-asset-item>   
         <a-asset-item id="road5" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Froad5.glb?v=1619090353154"></a-asset-item> 
-      
+        <a-asset-item id="welcommingAH" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Fahlan%20beek%20ana%20esmy%20Hussien-01.mp3?v=1619442362290"></a-asset-item> 
       </a-assets>
    
  <a-gltf-model id="snow-el" src="#snow"  visible="false"></a-gltf-model>   
@@ -46,11 +46,16 @@
      <a-entity oculus-touch-controls="hand: left"></a-entity>
      <a-entity oculus-touch-controls="hand: right" controller-cursor raycaster="objects: .coins"></a-entity>
      ---->
-      <a-entity game-manager ></a-entity>
+      
      <a-entity cursor="rayOrigin: mouse" grab></a-entity>
       
-      <a-camera id="cam" >     </a-camera>
+      <a-camera id="cam" look-controls="enabled:false" >     </a-camera>
       
+      <a-box id="camera1" scale="0.2 0.2 0.2" position="0 1.6 -1.62446" visible = "false"></a-box>
+      <a-box id="camera2" scale="0.2 0.2 0.2" visible="false" position="2.4048 1.6 2.99784" ></a-box>
+      <a-box id="camera3" scale="0.2 0.2 0.2" visible="false" position="1.93036 1.6 0.56272" ></a-box>
+      <a-box id="camera4" scale="0.2 0.2 0.2" visible="false" position="3.75388 1.6 1.84991" ></a-box>
+      <a-box id="camera5" scale="0.2 0.2 0.2" visible="false" position="5.37734 1.6.77397" ></a-box>
 
       <a-box id="start1" scale="0.2 0.2 0.2" color="red" position = "0 0.2 -3.795" visible = "false"></a-box>
       <a-box id="start2" scale="0.2 0.2 0.2" position="-0.17149 0.2 -0.76465" visible = "false"></a-box>
@@ -58,7 +63,7 @@
       <a-box id="start4" scale="0.2 0.2 0.2" position="-1.71469 0.2 0.34731" visible="false" ></a-box>
       <a-box id="start5" scale="0.2 0.2 0.2" position="-0.80655 0.2 0.73867" visible = "false"></a-box>
 
-
+      <a-entity game-manager ></a-entity>
          
           
       </a-plane>

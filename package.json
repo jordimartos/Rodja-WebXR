@@ -4,7 +4,7 @@
   "main": "dist/indexnpm.html",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js  --progress --profile --color --display-error-details --display-cached --bail",
-    "start-dev": " live-server --open=/dist --no-browser",
+    "start-dev": " live-server  --no-browser",
     "lint": "gts lint **/*.ts",
     "clean": "gts clean **/*.ts",
     "fix": "gts fix **/*.ts",

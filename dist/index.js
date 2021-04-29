@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -297,6 +297,162 @@ var __extends = this && this.__extends || function () {
     };
 }();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CoinDistractorComponent = void 0;
+var aframe_wrapper_1 = __webpack_require__(0);
+var CoinDistractorComponent = /** @class */function (_super) {
+    __extends(CoinDistractorComponent, _super);
+    function CoinDistractorComponent() {
+        return _super.call(this, 'coin-distractor', {
+            canStart: {
+                type: 'boolean',
+                default: true
+            },
+            myNumber: {
+                type: 'number',
+                default: 1
+            },
+            myTrack: {
+                type: 'number',
+                default: 1
+            }
+        }) || this;
+    }
+    CoinDistractorComponent.prototype.init = function () {
+        console.log('distractor exist');
+        var newpos;
+        var random = 0;
+        var data = this.data;
+        var targets = document.querySelectorAll(".target" + data.myNumber.toString() + window.track.toString());
+        console.log(targets);
+        var el = this.el;
+        if (sessionStorage.getItem('level') == '3') {
+            el.setAttribute('data', 'canStart', 'true');
+        }
+        var startDsMovement = function cycle(index) {
+            setTimeout(function () {
+                console.log('called');
+                newpos = targets[random].getAttribute("position");
+                el.setAttribute("animation", "property:position; to:" + newpos.x + " 0.2 " + newpos.z + " dur:2000");
+                if (random == 0) {
+                    random = 1;
+                } else {
+                    random = 0;
+                }
+                cycle(random);
+            }, 2000);
+        };
+        if (data.myTrack == window.track && sessionStorage.getItem('level') == '3') {
+            startDsMovement(targets.length);
+        }
+    };
+    CoinDistractorComponent.prototype.update = function () {};
+    CoinDistractorComponent.prototype.play = function () {};
+    CoinDistractorComponent.prototype.pause = function () {};
+    CoinDistractorComponent.prototype.tick = function () {};
+    CoinDistractorComponent.prototype.remove = function () {};
+    CoinDistractorComponent.prototype.destroy = function () {};
+    return CoinDistractorComponent;
+}(aframe_wrapper_1.ComponentWrapper);
+exports.CoinDistractorComponent = CoinDistractorComponent;
+new CoinDistractorComponent().register();
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __extends = this && this.__extends || function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+            d.__proto__ = b;
+        } || function (d, b) {
+            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Distractor1Component = void 0;
+var aframe_wrapper_1 = __webpack_require__(0);
+var Distractor1Component = /** @class */function (_super) {
+    __extends(Distractor1Component, _super);
+    function Distractor1Component() {
+        return _super.call(this, 'distrctor1-component', {
+            canStart: {
+                type: 'boolean',
+                default: true
+            }
+        }) || this;
+    }
+    Distractor1Component.prototype.init = function () {
+        console.log('distractor exist');
+        var newpos;
+        var random = 0;
+        var box = document.querySelectorAll(".bTarget"); //Array of targets
+        var el = this.el;
+        if (sessionStorage.getItem('level') == '2' || sessionStorage.getItem('level') == '3') {
+            el.setAttribute('visible', 'true');
+        }
+        var startDsMovement = function cycle(index) {
+            setTimeout(function () {
+                random++;
+                newpos = box[random].getAttribute("position"); // restor next target for distractor
+                el.setAttribute("animation", "property:position; to:" + newpos.x + " 1 " + newpos.z + " dur:15000");
+                if (random >= box.length - 1) {
+                    random = 0; // Set it back to `0` when it reaches `4`
+                }
+                // console.log("i'm here 2")
+                cycle(random);
+                //cycle(++index % 3);
+            }, 2000);
+        };
+        startDsMovement(box.length);
+    };
+    Distractor1Component.prototype.update = function () {};
+    Distractor1Component.prototype.play = function () {};
+    Distractor1Component.prototype.pause = function () {};
+    Distractor1Component.prototype.tick = function () {};
+    Distractor1Component.prototype.remove = function () {};
+    Distractor1Component.prototype.destroy = function () {};
+    return Distractor1Component;
+}(aframe_wrapper_1.ComponentWrapper);
+exports.Distractor1Component = Distractor1Component;
+new Distractor1Component().register();
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __extends = this && this.__extends || function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+            d.__proto__ = b;
+        } || function (d, b) {
+            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.gameManagerComponent = void 0;
 var aframe_wrapper_1 = __webpack_require__(0);
 var nextCoinIndex = 2;
@@ -358,7 +514,7 @@ exports.gameManagerComponent = gameManagerComponent;
 new gameManagerComponent().register();
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -386,6 +542,7 @@ exports.NPCComponent = void 0;
 var aframe_wrapper_1 = __webpack_require__(0);
 var nextCoinIndex = 2;
 var coinMaxNumber = 3;
+var currentCoinIndex = 1;
 var NPCComponent = /** @class */function (_super) {
     __extends(NPCComponent, _super);
     function NPCComponent() {
@@ -401,13 +558,24 @@ var NPCComponent = /** @class */function (_super) {
         var data = this.data;
         var startPos = document.getElementById('start' + window.track);
         var nextCoin = document.getElementById(nextCoinIndex.toString() + window.track);
+        var isStartVoicePlayed = false;
         console.log('next coin ' + nextCoinIndex);
+        el.setAttribute('sound', 'src', '#welcome-sound');
+        el.setAttribute('sound', 'playSound');
         el.setAttribute('position', startPos.getAttribute('position'));
         console.log(startPos.getAttribute('position'));
         console.log(el.getAttribute('position'));
         el.addEventListener('movingended', function () {
             nextCoin = document.getElementById(nextCoinIndex.toString() + window.track);
             showNextCoin(nextCoin);
+        });
+        el.addEventListener('sound-ended', function () {
+            if (!isStartVoicePlayed) {
+                console.log('yalla');
+                el.setAttribute('sound', 'src', '#ready-sound');
+                el.setAttribute('sound', 'playSound');
+                isStartVoicePlayed = true;
+            }
         });
     };
     NPCComponent.prototype.update = function () {};
@@ -422,23 +590,26 @@ exports.NPCComponent = NPCComponent;
 function showNextCoin(nextCoin_el) {
     console.log("npc arrived");
     if (nextCoinIndex < 9) {
+        var coin = document.getElementById(currentCoinIndex.toString() + window.track);
+        coin.setAttribute('visible', 'false');
         nextCoin_el.setAttribute('visible', 'true');
         nextCoin_el.setAttribute('coin-component', 'canStart:true');
         nextCoinIndex++;
+        currentCoinIndex++;
     }
 }
 new NPCComponent().register();
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gameManagerComponent = exports.CoinComponent = exports.NPCComponent = void 0;
-var npc_component_1 = __webpack_require__(3);
+exports.CoinDistractorComponent = exports.Distractor1Component = exports.gameManagerComponent = exports.CoinComponent = exports.NPCComponent = void 0;
+var npc_component_1 = __webpack_require__(5);
 Object.defineProperty(exports, "NPCComponent", { enumerable: true, get: function () {
     return npc_component_1.NPCComponent;
   } });
@@ -446,9 +617,17 @@ var coin_component_1 = __webpack_require__(1);
 Object.defineProperty(exports, "CoinComponent", { enumerable: true, get: function () {
     return coin_component_1.CoinComponent;
   } });
-var game_manager_1 = __webpack_require__(2);
+var game_manager_1 = __webpack_require__(4);
 Object.defineProperty(exports, "gameManagerComponent", { enumerable: true, get: function () {
     return game_manager_1.gameManagerComponent;
+  } });
+var distractor1_1 = __webpack_require__(3);
+Object.defineProperty(exports, "Distractor1Component", { enumerable: true, get: function () {
+    return distractor1_1.Distractor1Component;
+  } });
+var coin_distractor_1 = __webpack_require__(2);
+Object.defineProperty(exports, "CoinDistractorComponent", { enumerable: true, get: function () {
+    return coin_distractor_1.CoinDistractorComponent;
   } });
 
 /***/ })

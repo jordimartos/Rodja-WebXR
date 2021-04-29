@@ -4,3 +4,7 @@ import { CoinComponent } from './components/coin-component';
 export { CoinComponent };
 import { gameManagerComponent } from './components/game-manager';
 export { gameManagerComponent };
+import { Distractor1Component } from './components/distractor1';
+export { Distractor1Component };
+import { CoinDistractorComponent } from './components/coin-distractor';
+export { CoinDistractorComponent };

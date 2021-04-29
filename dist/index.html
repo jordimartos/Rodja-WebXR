@@ -32,9 +32,9 @@
         <a-asset-item id="road3" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Froad3.glb?v=1619090332678"></a-asset-item>
         <a-asset-item id="road4" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Froad4.glb?v=1619090341360"></a-asset-item>   
         <a-asset-item id="road5" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Froad5.glb?v=1619090353154"></a-asset-item> 
-      
-      </a-assets>
-   
+        <a-asset-itme id= "welcome-sound" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Fahlan%20beek%20ana%20esmy%20Hussien-01.mp3?v=1619442362290"></a-asset-itme>      </a-assets>
+        <a-asset-itme id= "ready-sound" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Fgahz%20est3d%20ebda2%20hussien.mp3?v=1619442554342"></a-asset-itme>      </a-assets>
+        <a-asset-item id= "butterfly"  src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2FButterfly.glb?v=1607868452056"></a-asset-item>
  <a-gltf-model id="snow-el" src="#snow"  visible="false"></a-gltf-model>   
  <a-gltf-model id="desert-el"  src="#desert" visible = "false"  ></a-gltf-model>
  <a-gltf-model id="road1-el"  src="#road1" visible = "false"  ></a-gltf-model>  
@@ -46,8 +46,18 @@
      <a-entity oculus-touch-controls="hand: left"></a-entity>
      <a-entity oculus-touch-controls="hand: right" controller-cursor raycaster="objects: .coins"></a-entity>
      ---->
+
+
+     <a-box id="box"  visible="false" depth="0.4" width = "0.4" height = "0.4" position = "0 0.1 -0.1"  class = "bTarget" ></a-box>   
+     <a-box id="box1" visible="false" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 1"   class = "bTarget"></a-box> 
+     <a-box id="box2" visible="false" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 -1"   class = "bTarget"  ></a-box> 
+     <a-box id="box3" visible="false" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 -1"  class = "bTarget"></a-box>  
+     <a-box id="box4" visible="false" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 1"   class = "bTarget"  ></a-box>  
+     
       
-     <a-entity cursor="rayOrigin: mouse" grab></a-entity>
+     <a-gltf-model id="distractor1" src="#butterfly" animation-mixer distrctor1-component scale="2 2 2" visible="false"></a-gltf-model>
+
+     <a-entity cursor="rayOrigin: mouse" raycaster="objects: .coins" grab></a-entity>
       
       <a-camera id="cam" look-controls="enabled:false" >     </a-camera>
       
@@ -68,32 +78,41 @@
           
       </a-plane>
       
-      <a-sphere id="npc" color="yellow" radius="0.25" position="-0.79606 0.2 0.73843" npc-component></a-sphere>
+      <a-sphere id="npc" color="yellow" radius="0.25" position="-0.79606 0.2 0.73843" npc-component sound="autoplay: true; "></a-sphere>
       
       <a-curve id="track11">
         <a-box  scale="0.02 0.02 0.02" position="0 0.2 -3.80892" curve-point="" visible="false" ></a-box>
         <a-box scale="0.02 0.02 0.02" position="-1.82874 0.2 -4.3307" curve-point="" visible="false" ></a-box>
        
-         <a-box id="11" scale="0.25 0.25 0.25" position="-2.40401 0.2 -5.53995" visible="false" coin-component="canStart: true" curve-point="" color="blue" class="coins" ></a-box>
+         <a-box id="11" scale="0.25 0.25 0.25" position="-2.40401 0.2 -5.53995" coin-distractor="myNumber:1;myTrack:1" visible="false" coin-component="canStart: true" curve-point="" color="blue" class="coins" ></a-box>
+         <a-box scale="0.25 0.25 0.25" position="-2.12583 0.2 -5.99563" visible="false" class="target11" ></a-box>
+         <a-box scale="0.25 0.25 0.25" position="-2.62583 0.2 -5.09563" visible="false" class="target11" ></a-box>
+         
       </a-curve >
        
       <a-curve id= "track21" >
         <a-box  scale="0.2 0.02 0.02" position="-2.40401 0.2 -5.53995" curve-point="" visible="false" ></a-box>
       <a-box scale="0.02 0.02 0.02" position="-3.49096 0.2 -5.2708" curve-point="" visible="false" ></a-box>
      <a-box scale="0.02 0.02 0.02" position="-3.63157 0.2 -4.19209" curve-point="" visible="false" ></a-box>
-        <a-box id="21" scale="0.25 0.25 0.25" position="-3.56525 0.2 -2.36821" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+        <a-box id="21" scale="0.25 0.25 0.25" position="-3.56525 0.2 -2.36821" coin-component="" coin-distractor="myNumber:2;myTrack:1" curve-point="" class="coins" visible="false"></a-box>
+        <a-box scale="0.25 0.25 0.25" position="-3.16525 0.2 -2.36821" visible="false" class="target21" ></a-box>
+        <a-box scale="0.25 0.25 0.25" position="-3.86525 0.2 -2.36821" visible="false" class="target21" ></a-box>
       </a-curve>
        <a-curve id="track31">
       <a-box  scale = "0.02 0.02 0.02"  position = "-3.56525 0.2 -2.36821"  curve-point visible="false"></a-box>
       <a-box scale="0.02 0.02 0.02" position="-3.54357 0.2 -1.32139" curve-point="" visible="false" ></a-box>
-        <a-box id="31" scale="0.25 0.25 0.25" position="-2.17009 0.2 -0.83887" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+        <a-box id="31" scale="0.25 0.25 0.25" position="-2.17009 0.2 -0.5s3887" coin-component="" curve-point="" coin-distractor="myNumber:3;myTrack:1" class="coins" visible="false"></a-box>
+        <a-box scale="0.25 0.25 0.25" position="-1.77009 0.2 -0.5s3887" visible="false" class="target31" ></a-box>
+        <a-box scale="0.25 0.25 0.25" position="-2.57009 0.2 -0.5s3887" visible="false" class="target31" ></a-box>
       </a-curve>
       
       
         <a-curve id="track41">
       <a-box  scale = "0.02 0.02 0.02"  position = "-2.17009 0.2 -0.83887" curve-point visible="false"></a-box>
       <a-box scale="0.02 0.02 0.02" position="-2.03826 0.2 1.07196" curve-point="" visible="false" ></a-box>
-     <a-box id="41" scale="0.25 0.25 0.25" position="-1.29638 0.2 1.98908" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+     <a-box id="41" scale="0.25 0.25 0.25" position="-1.29638 0.2 1.98908" coin-component="" curve-point="" class="coins" coin-distractor="myNumber:4;myTrack:1" visible="false"></a-box>
+     <a-box scale="0.25 0.25 0.25" position="-1.38351 0.2 1.46438" visible="false" class="target41" ></a-box>
+     <a-box scale="0.25 0.25 0.25" position="-1.38351 0.2 2.46438" visible="false" class="target41" ></a-box>
       </a-curve>
       
       
@@ -101,14 +120,18 @@
         <a-curve id="track51">
       <a-box  scale = "0.02 0.02 0.02"  position = "-1.29638 0.2 1.94878" curve-point visible="false"></a-box>
       <a-box scale="0.02 0.02 0.02" position="0.75237 0.2 2.06211" curve-point="" visible="false" ></a-box>
-     <a-box id="51" scale="0.25 0.25 0.25" position="1.76426 0.2 1.91244" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+     <a-box id="51" scale="0.25 0.25 0.25" position="1.76426 0.2 1.91244" coin-component="" curve-point="" class="coins" coin-distractor="myNumber:5;myTrack:1" visible="false"></a-box>
+     <a-box scale="0.25 0.25 0.25" position="1.82506 0.2 1.46438" visible="false" class="target51" ></a-box>
+     <a-box scale="0.25 0.25 0.25" position="1.82506 0.2 2.46438" visible="false" class="target51" ></a-box>
       </a-curve>
       
       
               <a-curve id="track61">
       <a-box  scale = "0.02 0.02 0.02"  position = "1.76426 0.2 1.91244" curve-point visible="false"></a-box>
       <a-box scale="0.02 0.02 0.02" position="2.12517 0.2 1.20513" curve-point="" visible="false" ></a-box>
-     <a-box id="61" scale="0.25 0.25 0.25" position="2.3163 0.2 -0.55678" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+     <a-box id="61" scale="0.25 0.25 0.25" position="2.3163 0.2 -0.55678" coin-component="" curve-point="" class="coins" coin-distractor="myNumber:6;myTrack:1" visible="false"></a-box>
+     <a-box scale="0.25 0.25 0.25" position="2.67729 0.2 -0.14879" visible="false" class="target61" material="" geometry=""></a-box>
+     <a-box scale="0.25 0.25 0.25" position="2 0.2 -1" visible="false" class="target61" material="" geometry=""></a-box>
       </a-curve>
       
       
@@ -116,13 +139,17 @@
           <a-curve id="track71">
       <a-box  scale = "0.02 0.02 0.02"  position = "2.3163 0.2 -0.55678" curve-point visible="false"></a-box>
       <a-box scale="0.02 0.02 0.02" position="3.48094 0.2 -0.73678" curve-point="" visible="false"></a-box>
-     <a-box id="71" scale="0.25 0.25 0.25" position="3.85857 0.2 -1.88441" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+     <a-box id="71" scale="0.25 0.25 0.25" position="3.85857 0.2 -1.88441" coin-component="" curve-point="" class="coins" coin-distractor="myNumber:7;myTrack:1" visible="false"></a-box>
+     <a-box scale="0.25 0.25 0.25" position="3.44096 0.2 -1.90686" visible="false" class="target71" ></a-box>
+     <a-box scale="0.25 0.25 0.25" position="4.23314 0.2 -1.88491" visible="false" class="target71" ></a-box>
       </a-curve>
       
            <a-curve id="track81">
       <a-box  scale = "0.02 0.02 0.02"  position = "3.85857 0.2 -1.88441" curve-point visible="false"></a-box>
       <a-box scale="0.02 0.02 0.02" position="3.48094 0.2 -3.63516" curve-point="" visible="false" ></a-box>
-     <a-box id="81" scale="0.25 0.25 0.25" position="2.3174 0.2 -3.76813" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+     <a-box id="81" scale="0.25 0.25 0.25" position="2.3174 0.2 -3.76813" coin-component="" curve-point="" class="coins" coin-distractor="myNumber:8;myTrack:1" visible="false"></a-box>
+     <a-box scale="0.25 0.25 0.25" position="2.3174 0.2 -3.47159" visible="false" class="target81" ></a-box>
+     <a-box scale="0.25 0.25 0.25" position="2.3174 0.2 -4.25236" visible="false" class="target81" ></a-box>
       </a-curve>
       
 
@@ -132,50 +159,66 @@
         <a-box  scale="0.02 0.02 0.02" position="-0.19454 0.2 -0.75961" curve-point="" visible="false" ></a-box>
         <a-box scale="0.02 0.02 0.02" position="-2.30262 0.2 0.79434" curve-point="" visible="false" ></a-box>
        
-        <a-box id="12" scale="0.25 0.25 0.25" position="-4.07729 0.2 2.68271" coin-component="canStart: true" curve-point="" color="blue" class="coins" visible="false"></a-box>
+        <a-box id="12" scale="0.25 0.25 0.25" position="-4.07729 0.2 2.68271" coin-component="canStart: true" curve-point="" color="blue" coin-distractor="myNumber:1;myTrack:2" class="coins" visible="false"></a-box>
+        <a-box scale="0.25 0.25 0.25" position="-3.64675 0.2 2.61907" visible="false" class="target12" ></a-box>
+        <a-box scale="0.25 0.25 0.25" position="-4.60656 0.2 2.79217" visible="false" class="target12" ></a-box>
       </a-curve >
 
       <a-curve id= "track22" >
         <a-box scale="0.2 0.02 0.02" position="-4.07729 0.2 2.68271" curve-point="" visible="false" ></a-box>
         <a-box scale="0.02 0.02 0.02" position="-2.69955 0.2 4.27681" curve-point="" visible="false" ></a-box>
      
-        <a-box id="22" scale="0.25 0.25 0.25" position="-1.00653 0.2 5.95627" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+        <a-box id="22" scale="0.25 0.25 0.25" position="-1.00653 0.2 5.95627" coin-component="" curve-point="" class="coins" visible="false" coin-distractor="myNumber:2;myTrack:2"></a-box>
+        <a-box scale="0.25 0.25 0.25" position="-1.14099 0.2 6.42752" visible="false" class="target22" ></a-box>
+        <a-box scale="0.25 0.25 0.25" position="-1.00653 0.2 5.48867" visible="false" class="target22" ></a-box>
       </a-curve>
 
       <a-curve id="track32">
         <a-box  scale = "0.02 0.02 0.02"  position = "-1.00653 0.2 5.95627"  curve-point visible="false"></a-box>
         <a-box scale="0.02 0.02 0.02" position="0.86993 0.2 6.19587" curve-point="" visible="false" ></a-box>
-        <a-box id="32" scale="0.25 0.25 0.25" position="3.02175 0.2 6.28944" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+        <a-box id="32" scale="0.25 0.25 0.25" position="3.02175 0.2 6.28944" coin-component="" curve-point="" class="coins" visible="false" coin-distractor="myNumber:3;myTrack:2"></a-box>
+        <a-box scale="0.25 0.25 0.25" position="3.06871 0.2 5.79785" visible="false" class="target32" ></a-box>
+        <a-box scale="0.25 0.25 0.25" position="3.02175 0.2 6.57965" visible="false" class="target32" ></a-box>
         </a-curve>
 
         <a-curve id="track42">
           <a-box  scale = "0.02 0.02 0.02"  position = "3.02175 0.2 6.28944" curve-point visible="false"></a-box>
           <a-box scale="0.02 0.02 0.02" position="4.93146 0.2 6.11746" curve-point="" visible="false" ></a-box>
-          <a-box id="42" scale="0.25 0.25 0.25" position="5.34302 0.2 4.92182" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+          <a-box id="42" scale="0.25 0.25 0.25" position="5.34302 0.2 4.92182" coin-component="" curve-point="" class="coins" visible="false" coin-distractor="myNumber:4;myTrack:2"></a-box>
+          <a-box scale="0.25 0.25 0.25" position="5.76972 0.20009 4.91573" visible="false" class="target42"></a-box>
+          <a-box scale="0.25 0.25 0.25" position="5.04197 0.2 4.92182" visible="false" class="target42" ></a-box>
           </a-curve>
           <a-curve id="track52">
             <a-box  scale = "0.02 0.02 0.02"  position = "5.34302 0.2 4.92182" curve-point visible="false"></a-box>
             <a-box scale="0.02 0.02 0.02" position="5.26915 0.2 2.87858" curve-point="" visible="false" ></a-box>
-            <a-box id="52" scale="0.25 0.25 0.25" position="5.91023 0.2 2.33982" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+            <a-box id="52" scale="0.25 0.25 0.25" position="5.91023 0.2 2.33982" coin-component="" curve-point="" class="coins" visible="false" coin-distractor="myNumber:5;myTrack:2"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="5.90803 0.2 1.97707" visible="false" class="target52" ></a-box>
+            <a-box scale="0.25 0.25 0.25" position="5.91023 0.2 2.64279" visible="false" class="target52" ></a-box>
             </a-curve>
 
             <a-curve id="track62">
               <a-box  scale = "0.02 0.02 0.02"  position = "5.91023 0.2 2.33982" curve-point visible="false"></a-box>
               <a-box scale="0.02 0.02 0.02" position="9.22897 0.2 2.2897" curve-point="" visible="false" material="" geometry=""></a-box>
-              <a-box id="62" scale="0.25 0.25 0.25" position="9.54229 0.2 1.45248" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+              <a-box id="62" scale="0.25 0.25 0.25" position="9.54229 0.2 1.45248" coin-component="" curve-point="" class="coins" visible="false" coin-distractor="myNumber:6;myTrack:2"></a-box>
+              <a-box scale="0.25 0.25 0.25" position="9.19798 0.2 1.45248" visible="false" class="target62" ></a-box>
+              <a-box scale="0.25 0.25 0.25" position="9.90605 0.2 1.45248" visible="false" class="target62" ></a-box>
               </a-curve>
 
 
               <a-curve id="track72">
                 <a-box  scale = "0.02 0.02 0.02"  position = "9.54229 0.2 1.45248" curve-point visible="false"></a-box>
                 <a-box scale="0.02 0.02 0.02" position="9.63917 0.2 -1.42981" curve-point="" visible="false" material="" geometry=""></a-box>
-                <a-box id="72" scale="0.25 0.25 0.25" position="8.69101 0.2 -1.9313" coin-component="" curve-point="" class="coins" material="" geometry="" visible="false"></a-box>
+                <a-box id="72" scale="0.25 0.25 0.25" position="8.69101 0.2 -1.9313" coin-component="" curve-point="" class="coins" material="" geometry="" coin-distractor="myNumber:7;myTrack:2" visible="false"></a-box>
+                <a-box scale="0.25 0.25 0.25" position="8.69101 0.2 -2.27171" visible="false" class="target72" ></a-box>
+                <a-box scale="0.25 0.25 0.25" position="8.69101 0.2 -1.36335" visible="false" class="target72" ></a-box>
                 </a-curve>
 
                 <a-curve id="track82">
                   <a-box scale="0.02 0.02 0.02" position="8.74524 0.2 -1.88441" curve-point="" visible="false" ></a-box>
                   <a-box scale="0.02 0.02 0.02" position="6.83168 0.2 -1.77925" curve-point="" visible="false" ></a-box>
-                  <a-box id="82" scale="0.25 0.25 0.25" position="4.88105 0.2 -1.13639" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+                  <a-box id="82" scale="0.25 0.25 0.25" position="4.88105 0.2 -1.13639" coin-component="" curve-point="" class="coins" visible="false" coin-distractor="myNumber:8;myTrack:2"></a-box>
+                  <a-box scale="0.25 0.25 0.25" position="4.92287 0.2 -0.68333" visible="false" class="target82" ></a-box>
+                  <a-box scale="0.25 0.25 0.25" position="4.88105 0.2 -1.36335" visible="false" class="target82" ></a-box>
                   </a-curve>
 
 <!------track 3> --->
@@ -184,49 +227,66 @@
   <a-box  scale="0.02 0.02 0.02" position="2.31765 0.2 -1.6044" curve-point="" visible="false" ></a-box>
   <a-box scale="0.02 0.02 0.02" position="0.03566 0.2 0.68013" curve-point="" visible="false" ></a-box>
  
-  <a-box id="13" scale="0.25 0.25 0.25" position="-0.92949 0.2 1.78836" coin-component="canStart: true" curve-point="" visible="false"></a-box>
+  <a-box id="13" scale="0.25 0.25 0.25" position="-0.92949 0.2 1.78836"  coin-distractor="myNumber:1;myTrack:3" visible="false" coin-component="canStart: true" curve-point="" color="blue" class="coins" ></a-box>  
+  <a-box scale="0.25 0.25 0.25" position="-1.43939 0.2 1.78836" visible="false" class="target13" ></a-box>
+  <a-box scale="0.25 0.25 0.25" position="-0.61214 0.2 1.9107" visible="false" class="target13" ></a-box>
 </a-curve >
 
 <a-curve id= "track23" >
   <a-box  scale="0.2 0.02 0.02" position="-0.92949 0.2 1.78836"  curve-point="" visible="false" ></a-box>
   <a-box scale="0.02 0.02 0.02" position="-0.23498 0.2 2.86715" curve-point="" visible="false"></a-box>
 
-  <a-box id="23" scale="0.25 0.25 0.25" position="1.22523 0.2 4.58967" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+  <a-box id="23" scale="0.25 0.25 0.25" position="1.22523 0.2 4.58967" coin-component="" coin-distractor="myNumber:2;myTrack:3" curve-point="" class="coins" visible="false"></a-box>
+  <a-box scale="0.25 0.25 0.25" position="0.95325 0.2 4.85418" visible="false" class="target23" ></a-box>
+  <a-box scale="0.25 0.25 0.25" position="1.53289 0.2 4.31335" visible="false" class="target23" ></a-box>
 </a-curve>
 
 <a-curve id="track33">
   <a-box  scale = "0.02 0.02 0.02"  position = "1.22523 0.2 4.58967"  curve-point visible="false"></a-box>
   <a-box scale="0.02 0.02 0.02" position="1.97599 0.2 5.32234" curve-point="" visible="false" material="" geometry=""></a-box>
-  <a-box id="33" scale="0.25 0.25 0.25" position="3.02175 0.2 6.28944" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+  <a-box id="33" scale="0.25 0.25 0.25" position="3.02175 0.2 6.28944" coin-component="" coin-distractor="myNumber:3;myTrack:3"  curve-point="" class="coins" visible="false"></a-box>
+  <a-box scale="0.25 0.25 0.25" position="3.26728 0.2 6.06639" visible="false" class="target33" ></a-box>
+ <a-box scale="0.25 0.25 0.25" position="2.6728 0.2 6.56026" visible="false" class="target33" ></a-box>
+  
   </a-curve>
 
   <a-curve id="track43">
     <a-box  scale = "0.02 0.02 0.02"  position = "3.02175 0.2 6.28944" curve-point visible="false"></a-box>
     <a-box scale="0.02 0.02 0.02" position="4.16308 0.2 7.61956" curve-point="" visible="false" material="" geometry=""></a-box>
-    <a-box id="43" scale="0.25 0.25 0.25" position="5.67732 0.2 7.82678" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+    <a-box id="43" scale="0.25 0.25 0.25" position="5.67732 0.2 7.82678" coin-component="" coin-distractor="myNumber:4;myTrack:3"  curve-point="" class="coins" visible="false"></a-box>
+    <a-box scale="0.25 0.25 0.25" position="5.41949 0.2 7.53018" visible="false" class="target43" ></a-box>
+    <a-box scale="0.25 0.25 0.25" position="5.84734 0.2 8.01469" visible="false" class="target43" ></a-box>
     </a-curve>
 
     <a-curve id="track53">
       <a-box  scale = "0.02 0.02 0.02"  position = "5.67732 0.2 7.82678" curve-point visible="false"></a-box>
       <a-box scale="0.02 0.02 0.02" position="6.41341 0.2 6.607" curve-point="" visible="false"></a-box>
-      <a-box id="53" scale="0.25 0.25 0.25" position="5.61109 0.2 5.18222" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+      <a-box id="53" scale="0.25 0.25 0.25" position="5.61109 0.2 5.18222" coin-component="" coin-distractor="myNumber:5;myTrack:3"  curve-point="" class="coins" visible="false"></a-box>
+      <a-box scale="0.25 0.25 0.25" position="5.30786 0.2 5.46645" visible="false" class="target53" ></a-box>
+      <a-box scale="0.25 0.25 0.25" position="5.8057 0.2 4.99725" visible="false" class="target53" ></a-box>
       </a-curve>
 
       <a-curve id="track63">
         <a-box  scale = "0.02 0.02 0.02"  position = "5.61109 0.2 5.18222" curve-point visible="false"></a-box>
         <a-box scale="0.02 0.02 0.02" position="3.99483 0.2 3.72576" curve-point="" visible="false" material="" geometry=""></a-box>
-        <a-box id="63" scale="0.25 0.25 0.25" position="2.84372 0.2 1.37532" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+        <a-box id="63" scale="0.25 0.25 0.25" position="2.84372 0.2 1.37532" coin-component="" coin-distractor="myNumber:6;myTrack:3" curve-point="" class="coins" visible="false"></a-box>
+        <a-box scale="0.25 0.25 0.25" position="2.73332 0.2 1.23664" visible="false" class="target63" ></a-box>
+        <a-box scale="0.25 0.25 0.25" position="3.30795 0.2 1.69151" visible="false" class="target63" ></a-box>
         </a-curve>
         <a-curve id="track73">
           <a-box  scale = "0.02 0.02 0.02"  position = "2.84372 0.2 1.37532" curve-point visible="false"></a-box>
           <a-box scale="0.02 0.02 0.02" position="5.04729 0.2 -0.66109" curve-point="" visible="false" material="" geometry=""></a-box>
-          <a-box id="73" scale="0.25 0.25 0.25" position="6.28916 0.2 -3.41913" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+          <a-box id="73" scale="0.25 0.25 0.25" position="6.28916 0.2 -3.41913" coin-component="" coin-distractor="myNumber:7;myTrack:3" curve-point="" class="coins" visible="false"></a-box>
+          <a-box scale="0.25 0.25 0.25" position="5.95958 0.2 -3.1166" visible="false" class="target73" ></a-box>
+          <a-box scale="0.25 0.25 0.25" position="6.53018 0.2 -3.63144" visible="false" class="target73" ></a-box>
           </a-curve>
 
           <a-curve id="track83">
             <a-box  scale = "0.02 0.02 0.02"  position = "6.28916 0.2 -3.41913" curve-point visible="false"></a-box>
             <a-box scale="0.02 0.02 0.02" position="4.72727 0.2 -4.27264" curve-point="" visible="false" material="" geometry=""></a-box>
-            <a-box id="83" scale="0.25 0.25 0.25" position="3.34818 0.2 -2.52103" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+            <a-box id="83" scale="0.25 0.25 0.25" position="3.34818 0.2 -2.52103" coin-component="" coin-distractor="myNumber:8;myTrack:3"  curve-point="" class="coins" visible="false"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="3.60959 0.2 -2.27593" visible="false" class="target83" ></a-box>
+            <a-box scale="0.25 0.25 0.25" position="3.04532 0.2 -2.69093" visible="false" class="target83" ></a-box>
             </a-curve>
   
 <!-------track 4>--->
@@ -234,7 +294,9 @@
     <a-box  scale="0.02 0.02 0.02" position="-1.70642 0.2 0.34277" curve-point="" visible="false" ></a-box>
     <a-box scale="0.02 0.02 0.02" position="-1.79732 0.2 1.47449" curve-point="" visible="false"></a-box>
    
-    <a-box id="14" scale="0.25 0.25 0.25" position="-1.87115 0.2 2.41024" coin-component="canStart: true" curve-point="" visible="false"></a-box>
+    <a-box id="14" scale="0.25 0.25 0.25" position="-1.87115 0.2 2.41024" coin-component="canStart: true" coin-distractor="myNumber:1;myTrack:4" curve-point="" visible="false" class="coins"></a-box>
+    <a-box scale="0.25 0.25 0.25" position="-1.51577 0.2 2.41024" visible="false" class="target14" ></a-box>
+    <a-box scale="0.25 0.25 0.25" position="-2.20542 0.2 2.41024" visible="false" class="target14" ></a-box>
   </a-curve >
 
 </a-curve >
@@ -243,43 +305,57 @@
   <a-box scale="0.2 0.02 0.02" position="-1.87115 0.2 2.41024" curve-point="" visible="false" ></a-box>
   <a-box scale="0.02 0.02 0.02" position="-1.92589 0.2 3.81924" curve-point="" visible="false" material="" geometry=""></a-box>
 
-  <a-box id="24" scale="0.25 0.25 0.25" position="-1.90237 0.2 5.2046" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+  <a-box id="24" scale="0.25 0.25 0.25" position="-1.90237 0.2 5.2046" coin-component="" coin-distractor="myNumber:2;myTrack:4" curve-point="" class="coins" visible="false"></a-box>
+  <a-box scale="0.25 0.25 0.25" position="-1.52764 0.2 5.2046" visible="false" class="target24" ></a-box>
+  <a-box scale="0.25 0.25 0.25" position="-2.23841 0.2 5.2046" visible="false" class="target24" ></a-box>
 </a-curve>
 
 <a-curve id="track34">
   <a-box  scale = "0.02 0.02 0.02"  position = "-1.90237 0.2 5.2046"  curve-point visible="false"></a-box>
   <a-box scale="0.02 0.02 0.02" position="-1.70182 0.2 6.51079" curve-point="" visible="false" ></a-box>
-  <a-box id="34" scale="0.25 0.25 0.25" position="-0.21794 0.2 6.73616" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+  <a-box id="34" scale="0.25 0.25 0.25" position="-0.21794 0.2 6.73616" coin-component="" coin-distractor="myNumber:3;myTrack:4" curve-point="" class="coins" visible="false"></a-box>
+  <a-box scale="0.25 0.25 0.25" position="-0.21794 0.2 6.37321" visible="false" class="target34" ></a-box>
+  <a-box scale="0.25 0.25 0.25" position="-0.21794 0.2 7.01486" visible="false" class="target34" ></a-box>
   </a-curve>
 
   <a-curve id="track44">
     <a-box  scale = "0.02 0.02 0.02"  position = "-0.21794 0.2 6.73616" curve-point visible="false"></a-box>
     <a-box scale="0.02 0.02 0.02" position="1.68572 0.2 6.65195" curve-point="" visible="false" ></a-box>
-    <a-box id="44" scale="0.25 0.25 0.25" position="4.37667 0.2 6.76087" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+    <a-box id="44" scale="0.25 0.25 0.25" position="4.37667 0.2 6.76087" coin-component="" coin-distractor="myNumber:4;myTrack:4" curve-point="" class="coins" visible="false"></a-box>
+    <a-box scale="0.25 0.25 0.25" position="4.37667 0.2 6.35787" visible="false" class="target44" ></a-box>
+    <a-box scale="0.25 0.25 0.25" position="4.37667 0.2 7.00337" visible="false" class="target44" ></a-box>  
     </a-curve>
 
     <a-curve id="track54">
       <a-box  scale = "0.02 0.02 0.02"  position = "4.37667 0.2 6.76087" curve-point visible="false"></a-box>
       <a-box scale="0.02 0.02 0.02" position="8.72355 0.2 6.72005" curve-point="" visible="false" ></a-box>
-      <a-box id="54" scale="0.25 0.25 0.25" position="9.72817 0.2 5.99285" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+      <a-box id="54" scale="0.25 0.25 0.25" position="9.72817 0.2 5.99285" coin-component="" coin-distractor="myNumber:5;myTrack:4" curve-point="" class="coins" visible="false"></a-box>
+      <a-box scale="0.25 0.25 0.25" position="9.37663 0.2 5.99285" visible="false" class="target54" ></a-box>
+      <a-box scale="0.25 0.25 0.25" position="10.09727 0.2 5.99285" visible="false" class="target54" ></a-box>  
       </a-curve>
 
       <a-curve id="track64">
         <a-box  scale = "0.02 0.02 0.02"  position = "9.72817 0.2 5.99285" curve-point visible="false"></a-box>
         <a-box scale="0.02 0.02 0.02" position="9.754 0.2 4.17748" curve-point="" visible="false" ></a-box>
-        <a-box id="64" scale="0.25 0.25 0.25" position="9.69871 0.2 0.42707" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+        <a-box id="64" scale="0.25 0.25 0.25" position="9.69871 0.2 0.42707" coin-component="" coin-distractor="myNumber:6;myTrack:4" curve-point="" class="coins" visible="false"></a-box>
+        <a-box scale="0.25 0.25 0.25" position="9.37169 0.2 0.45199" visible="false" class="target64" ></a-box>
+        <a-box scale="0.25 0.25 0.25" position="9.98712 0.2 0.42707" visible="false" class="target64" ></a-box>
         </a-curve>
 
         <a-curve id="track74">
           <a-box  scale = "0.02 0.02 0.02"  position = "9.69871 0.2 0.42707" curve-point visible="false"></a-box>
           <a-box scale="0.02 0.02 0.02" position="7.99491 0.2 -2.06827" curve-point="" visible="false" ></a-box>
-          <a-box id="74" scale="0.25 0.25 0.25" position="6.72945 0.2 -3.70004" coin-component="" curve-point="" class="coins" visible="false"></a-box>>
+          <a-box id="74" scale="0.25 0.25 0.25" position="6.72945 0.2 -3.70004" coin-component="" coin-distractor="myNumber:7;myTrack:4" curve-point="" class="coins" visible="false"></a-box>
+          <a-box scale="0.25 0.25 0.25" position="6.44373 0.2 -3.47646" visible="false" class="target74" ></a-box>
+          <a-box scale="0.25 0.25 0.25" position="7.0821 0.2 -3.98222" visible="false" class="target74" ></a-box>
           </a-curve>
 
           <a-curve id="track84">
             <a-box  scale = "0.02 0.02 0.02"  position = "6.72945 0.2 -3.70004" curve-point visible="false"></a-box>
             <a-box scale="0.02 0.02 0.02" position="4.72727 0.2 -4.27264" curve-point="" visible="false" material="" geometry=""></a-box>
-            <a-box id="84" scale="0.25 0.25 0.25" position="1.45586 0.2 -4.02881" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+            <a-box id="84" scale="0.25 0.25 0.25" position="1.45586 0.2 -4.02881" coin-component="" coin-distractor="myNumber:8;myTrack:4" curve-point="" class="coins" visible="false"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="1.6697 0.2 -3.61928" visible="false" class="target84" ></a-box>
+            <a-box scale="0.25 0.25 0.25" position="1.23674 0.2 -4.32663" visible="false" class="target84" ></a-box>
             </a-curve>
             --->
 <!--------track5-->
@@ -287,7 +363,9 @@
               <a-box scale="0.02 0.02 0.02" position="-0.79606 0.2 0.73843"curve-point="" visible="false" ></a-box>
               <a-box scale="0.02 0.02 0.02" position="-0.72793 0.2 2.14677" curve-point="" visible="false" ></a-box>
              
-              <a-box id="15" scale="0.25 0.25 0.25" position="-0.79173 0.2 3.93366" coin-component="canStart: true" curve-point="" visible="false"></a-box>>
+              <a-box id="15" scale="0.25 0.25 0.25" position="-0.79173 0.2 3.93366" coin-component="canStart: true" coin-distractor="myNumber:1;myTrack:5" curve-point="" class="coins" visible="false"></a-box>
+              <a-box scale="0.25 0.25 0.25" position="-0.30403 0.2 3.93366" visible="false" class="target15" ></a-box>
+              <a-box scale="0.25 0.25 0.25" position="-1.08385 0.2 3.93366" visible="false" class="target15" ></a-box>
             </a-curve >
           
           </a-curve >
@@ -296,44 +374,58 @@
             <a-box  scale="0.2 0.02 0.02" position="-0.79173 0.2 3.93366" curve-point="" visible="false" ></a-box>
             <a-box scale="0.02 0.02 0.02" position="-0.13872 0.2 4.37774" curve-point="" visible="false" material="" geometry=""></a-box>
           
-            <a-box id="25" scale="0.25 0.25 0.25" position="2.37303 0.2 4.5125" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+            <a-box id="25" scale="0.25 0.25 0.25" position="2.37303 0.2 4.5125" coin-component="" coin-distractor="myNumber:2;myTrack:5" curve-point="" class="coins" visible="false"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="2.37303 0.2 4.13689" visible="false" class="target25" ></a-box>
+            <a-box scale="0.25 0.25 0.25" position="2.37303 0.2 4.82673" visible="false" class="target25" ></a-box>
           </a-curve>
           
           <a-curve id="track35">
             <a-box  scale = "0.02 0.02 0.02"  position = "2.37303 0.2 4.5125"  curve-point visible="false"></a-box>
             <a-box scale="0.02 0.02 0.02" position="4.05633 0.2 4.79928" curve-point="" visible="false" ></a-box>
-            <a-box id="35" scale="0.25 0.25 0.25" position="4.15856 0.2 6.6152" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+            <a-box id="35" scale="0.25 0.25 0.25" position="4.15856 0.2 6.6152" coin-component="" curve-point="" coin-distractor="myNumber:3;myTrack:5" class="coins" visible="false"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="4.572 0.2 6.6152" visible="false" class="target35" ></a-box>
+            <a-box scale="0.25 0.25 0.25" position="3.8511 0.2 6.6152" visible="false" class="target35" ></a-box>   
             </a-curve>
           
             <a-curve id="track45">
               <a-box  scale = "0.02 0.02 0.02"  position = "4.15856 0.2 6.6152" curve-point visible="false"></a-box>
               <a-box scale="0.02 0.02 0.02" position="4.25284 0.2 8.65263" curve-point="" visible="false" ></a-box>
-              <a-box id="45" scale="0.25 0.25 0.25" position="6.03385 0.2 8.91739" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+              <a-box id="45" scale="0.25 0.25 0.25" position="6.03385 0.2 8.91739" coin-component="" coin-distractor="myNumber:4;myTrack:5" curve-point="" class="coins" visible="false"></a-box>
+              <a-box scale="0.25 0.25 0.25" position="6.03385 0.2 8.46477" visible="false" class="target45" ></a-box>
+              <a-box scale="0.25 0.25 0.25" position="6.03385 0.2 9.17463" visible="false" class="target45" ></a-box>
               </a-curve>
           
               <a-curve id="track55">
                 <a-box  scale = "0.02 0.02 0.02"  position = "6.03385 0.2 8.91739" curve-point visible="false"></a-box>
                 <a-box scale="0.02 0.02 0.02" position="8.05667 0.2 8.52103" curve-point="" visible="false" ></a-box>
-                <a-box id="55" scale="0.25 0.25 0.25" position="8.31692 0.2 7.09374" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+                <a-box id="55" scale="0.25 0.25 0.25" position="8.31692 0.2 7.09374" coin-component="" coin-distractor="myNumber:5;myTrack:5" curve-point="" class="coins" visible="false"></a-box>
+                <a-box scale="0.25 0.25 0.25" position="8.00499 0.2 7.09374" visible="false" class="target55" ></a-box>
+                <a-box scale="0.25 0.25 0.25" position="8.68057 0.2 7.09374" visible="false" class="target55" ></a-box>
                 </a-curve>
           
                 <a-curve id="track65">
                   <a-box  scale = "0.02 0.02 0.02"  position = "8.31692 0.2 7.09374" curve-point visible="false"></a-box>
                   <a-box scale="0.02 0.02 0.02" position="8.16369 0.2 3.23531" curve-point="" visible="false" ></a-box>
-                  <a-box id="65" scale="0.25 0.25 0.25" position="8.3196 0.2 -0.76548" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+                  <a-box id="65" scale="0.25 0.25 0.25" position="8.3196 0.2 -0.76548" coin-component="" coin-distractor="myNumber:6;myTrack:5" curve-point="" class="coins" visible="false"></a-box>
+                  <a-box scale="0.25 0.25 0.25" position="7.99798 0.2 -0.76548" visible="false" class="target65" ></a-box>
+                  <a-box scale="0.25 0.25 0.25" position="8.65024 0.2 -0.76548" visible="false" class="target65" ></a-box> 
                   </a-curve>
           
                   <a-curve id="track75">
                     <a-box  scale = "0.02 0.02 0.02"  position = "8.3196 0.2 -0.76548" curve-point visible="false"></a-box>
                     <a-box scale="0.02 0.02 0.02" position="8.2066 0.2 -3.89793" curve-point="" visible="false" ></a-box>
-                    <a-box id="75" scale="0.25 0.25 0.25" position="8.308 0.2 -4.8166" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+                    <a-box id="75" scale="0.25 0.25 0.25" position="8.308 0.2 -4.8166" coin-component="" coin-distractor="myNumber:7;myTrack:5" curve-point="" class="coins" visible="false"></a-box>
+                    <a-box scale="0.25 0.25 0.25" position="7.93884 0.2 -4.57564" visible="false" class="target75" ></a-box>
+                    <a-box scale="0.25 0.25 0.25" position="8.56924 0.2 -4.97295" visible="false" class="target75" ></a-box>
                     </a-curve>
           
                     <a-curve id="track85">
                       <a-box  scale = "0.02 0.02 0.02"  position = "8.308 0.2 -4.8166" curve-point visible="false"></a-box>
                       <a-box scale="0.02 0.02 0.02" position="4.48241 0.2 -5.08994" curve-point="" visible="false" ></a-box>
                       <a-box scale="0.02 0.02 0.02" position="3.81671 0.2 -4.72585" curve-point="" visible="false" ></a-box>
-                      <a-box id="85" scale="0.25 0.25 0.25" position="3.65007 0.2 -2.94997" coin-component="" curve-point="" class="coins" visible="false"></a-box>
+                      <a-box id="85" scale="0.25 0.25 0.25" position="3.65007 0.2 -2.94997" coin-component="" coin-distractor="myNumber:8;myTrack:5" curve-point="" class="coins" visible="false"></a-box>
+                      <a-box scale="0.25 0.25 0.25" position="3.32319 0.2 -2.94997" visible="false" class="target85" ></a-box>
+                      <a-box scale="0.25 0.25 0.25" position="4.03276 0.2 -2.94997" visible="false" class="target85" ></a-box> 
                       </a-curve>
 
    <a-sky></a-sky>

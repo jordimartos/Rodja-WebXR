@@ -5,6 +5,7 @@ interface TimeTakenSchema {
 declare global {
     interface Window {
         timeTaken: number;
+        startTime: any;
     }
 }
 export declare class timeTakenComponent extends ComponentWrapper<TimeTakenSchema> {

@@ -816,8 +816,10 @@ function showNextCoin(nextCoin_el) {
         nextCoinIndex++;
         currentCoinIndex++;
     } else {
-        var statictics_el = document.getElementById('statistics');
-        statictics_el.setAttribute('statistics-component', '');
+        var statictics_el_1 = document.getElementById('statistics');
+        setTimeout(function () {
+            statictics_el_1.setAttribute('statistics-component', '');
+        }, 5000);
     }
 }
 new NPCComponent().register();
@@ -846,6 +848,16 @@ var __extends = this && this.__extends || function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 }();
+var __assign = this && this.__assign || function () {
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StatisticsComponent = void 0;
 var aframe_wrapper_1 = __webpack_require__(0);
@@ -860,14 +872,38 @@ var StatisticsComponent = /** @class */function (_super) {
         }) || this;
     }
     StatisticsComponent.prototype.init = function () {
-        var totalNumberOfTasks = 8;
-        var TAS = 8; //Attention time attained by typical child during a task (look at the npc while moving)
-        var TypicalTime = 82; //the time taken by a typical child to finish the game
-        var TaR; //target ratio
-        var TiR; // time ratio
-        TaR = window.tasksLimitedInterupt / totalNumberOfTasks;
-        TiR = window.timeTaken / TypicalTime;
-        window.impulsivityScore = 1 / (-TaR * (Math.log10(TiR) - 1 + Math.E));
+        var _totalNumberOfTasks = 8;
+        var _TAS = 8; //Attention time attained by typical child during a task (look at the npc while moving)
+        var _TypicalTime = 82; //the time taken by a typical child to finish the game
+        var _TaR; //target ratio
+        var _TiR; // time ratio
+        var statistics;
+        var _avgResponseTime;
+        var allStats = {
+            myStats: ''
+        };
+        if (sessionStorage.getItem("allStats") != null) {
+            allStats = JSON.parse(sessionStorage.getItem("allStats"));
+            console.log("all stats is" + allStats);
+        }
+        _avgResponseTime = window.TimeResponse / 8;
+        _TaR = window.tasksLimitedInterupt / _totalNumberOfTasks;
+        _TiR = window.timeTaken / _TypicalTime;
+        window.impulsivityScore = 1 / (-_TaR * (Math.log10(_TiR) - 1 + Math.E));
+        window.omissionScore = _TAS / (window.AAS + Math.E);
+        statistics = {
+            omissionScore: window.omissionScore,
+            ImpulsivityScore: window.impulsivityScore,
+            AAS: window.AAS,
+            avgResponseTime: _avgResponseTime,
+            TaR: _TaR,
+            TiR: _TiR
+        };
+        console.log(statistics);
+        var date = new Date();
+        allStats[date.toString()] = __assign(__assign({}, allStats[date.toString()]), { statistics: statistics });
+        sessionStorage.setItem('allStats', JSON.stringify(allStats));
+        window.open('../../finalPage.html', "_self");
     };
     StatisticsComponent.prototype.update = function () {};
     StatisticsComponent.prototype.play = function () {};
@@ -922,18 +958,15 @@ var timeTakenComponent = /** @class */function (_super) {
         var data = this.data;
         window.timeTaken = 0;
         var timer;
-        /*
-          
-         timer = setInterval(() => {
-          window.timeTaken ++;
-           
-         console.log('timeTaken'+ window.timeTaken)
-           
+        var current = new Date();
+        window.startTime = current.toLocaleString();
+        timer = setInterval(function () {
+            window.timeTaken++;
+            console.log('timeTaken' + window.timeTaken);
         }, 1000);
-               
-          timer();
-          
-        */
+        el.addEventListener('stop', function () {
+            clearInterval(timer);
+        });
     };
     timeTakenComponent.prototype.update = function () {};
     timeTakenComponent.prototype.play = function () {};

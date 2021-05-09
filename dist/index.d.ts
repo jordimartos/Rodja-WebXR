@@ -18,3 +18,5 @@ import { CameraComponent } from './components/camera-looking';
 export { CameraComponent };
 import { LimitedInteruption } from './components/limited-interuption';
 export { LimitedInteruption };
+import { StatisticsComponent } from './components/statistics-component';
+export { StatisticsComponent };

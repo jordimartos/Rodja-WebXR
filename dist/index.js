@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -815,12 +815,73 @@ function showNextCoin(nextCoin_el) {
         nextCoin_el.setAttribute('coin-component', 'canStart:true');
         nextCoinIndex++;
         currentCoinIndex++;
+    } else {
+        var statictics_el = document.getElementById('statistics');
+        statictics_el.setAttribute('statistics-component', '');
     }
 }
 new NPCComponent().register();
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __extends = this && this.__extends || function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+            d.__proto__ = b;
+        } || function (d, b) {
+            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.StatisticsComponent = void 0;
+var aframe_wrapper_1 = __webpack_require__(0);
+var StatisticsComponent = /** @class */function (_super) {
+    __extends(StatisticsComponent, _super);
+    function StatisticsComponent() {
+        return _super.call(this, 'statistics-component', {
+            canStart: {
+                type: 'boolean',
+                default: false
+            }
+        }) || this;
+    }
+    StatisticsComponent.prototype.init = function () {
+        var totalNumberOfTasks = 8;
+        var TAS = 8; //Attention time attained by typical child during a task (look at the npc while moving)
+        var TypicalTime = 82; //the time taken by a typical child to finish the game
+        var TaR; //target ratio
+        var TiR; // time ratio
+        TaR = window.tasksLimitedInterupt / totalNumberOfTasks;
+        TiR = window.timeTaken / TypicalTime;
+        window.impulsivityScore = 1 / (-TaR * (Math.log10(TiR) - 1 + Math.E));
+    };
+    StatisticsComponent.prototype.update = function () {};
+    StatisticsComponent.prototype.play = function () {};
+    StatisticsComponent.prototype.pause = function () {};
+    StatisticsComponent.prototype.tick = function () {};
+    StatisticsComponent.prototype.remove = function () {};
+    StatisticsComponent.prototype.destroy = function () {};
+    return StatisticsComponent;
+}(aframe_wrapper_1.ComponentWrapper);
+exports.StatisticsComponent = StatisticsComponent;
+new StatisticsComponent().register();
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -886,7 +947,7 @@ exports.timeTakenComponent = timeTakenComponent;
 new timeTakenComponent().register();
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -950,14 +1011,14 @@ exports.TimeResponseComponent = TimeResponseComponent;
 new TimeResponseComponent().register();
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LimitedInteruption = exports.CameraComponent = exports.TimeResponseComponent = exports.ASSComponent = exports.timeTakenComponent = exports.CoinDistractorComponent = exports.Distractor1Component = exports.gameManagerComponent = exports.CoinComponent = exports.NPCComponent = void 0;
+exports.StatisticsComponent = exports.LimitedInteruption = exports.CameraComponent = exports.TimeResponseComponent = exports.ASSComponent = exports.timeTakenComponent = exports.CoinDistractorComponent = exports.Distractor1Component = exports.gameManagerComponent = exports.CoinComponent = exports.NPCComponent = void 0;
 var npc_component_1 = __webpack_require__(8);
 Object.defineProperty(exports, "NPCComponent", { enumerable: true, get: function () {
     return npc_component_1.NPCComponent;
@@ -978,7 +1039,7 @@ var coin_distractor_1 = __webpack_require__(4);
 Object.defineProperty(exports, "CoinDistractorComponent", { enumerable: true, get: function () {
     return coin_distractor_1.CoinDistractorComponent;
   } });
-var time_taken_1 = __webpack_require__(9);
+var time_taken_1 = __webpack_require__(10);
 Object.defineProperty(exports, "timeTakenComponent", { enumerable: true, get: function () {
     return time_taken_1.timeTakenComponent;
   } });
@@ -986,7 +1047,7 @@ var AAS_component_1 = __webpack_require__(1);
 Object.defineProperty(exports, "ASSComponent", { enumerable: true, get: function () {
     return AAS_component_1.ASSComponent;
   } });
-var timeResponseComponent_1 = __webpack_require__(10);
+var timeResponseComponent_1 = __webpack_require__(11);
 Object.defineProperty(exports, "TimeResponseComponent", { enumerable: true, get: function () {
     return timeResponseComponent_1.TimeResponseComponent;
   } });
@@ -997,6 +1058,10 @@ Object.defineProperty(exports, "CameraComponent", { enumerable: true, get: funct
 var limited_interuption_1 = __webpack_require__(7);
 Object.defineProperty(exports, "LimitedInteruption", { enumerable: true, get: function () {
     return limited_interuption_1.LimitedInteruption;
+  } });
+var statistics_component_1 = __webpack_require__(9);
+Object.defineProperty(exports, "StatisticsComponent", { enumerable: true, get: function () {
+    return statistics_component_1.StatisticsComponent;
   } });
 
 /***/ })

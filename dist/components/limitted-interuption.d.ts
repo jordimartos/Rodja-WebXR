@@ -1,8 +1,8 @@
 import { ComponentWrapper } from '../essential/aframe-wrapper';
-interface CoinComponentSchema {
+interface LimittedInteruptionComponentSchema {
     canStart: boolean;
 }
-export declare class CoinComponent extends ComponentWrapper<CoinComponentSchema> {
+export declare class LimittedInteruption extends ComponentWrapper<LimittedInteruptionComponentSchema> {
     constructor();
     init(): void;
     update(): void;

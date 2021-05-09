@@ -1,8 +1,8 @@
 import { ComponentWrapper } from '../essential/aframe-wrapper';
-interface CoinComponentSchema {
-    canStart: boolean;
+interface CameraComponentSchema {
+    canSee: boolean;
 }
-export declare class CoinComponent extends ComponentWrapper<CoinComponentSchema> {
+export declare class CameraComponent extends ComponentWrapper<CameraComponentSchema> {
     constructor();
     init(): void;
     update(): void;

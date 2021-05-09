@@ -26,12 +26,12 @@ export class CoinDistractorComponent extends ComponentWrapper<CoinDistarctorComp
   }
 
   init() {
-   console.log('distractor exist');
+   //console.log('distractor exist');
    let newpos:any;
    let random:number=0;
    let data = this.data;
    let targets = document.querySelectorAll(".target"+data.myNumber.toString()+window.track.toString())
-   console.log(targets);
+   //console.log(targets);
    let el =this.el
    
 
@@ -45,7 +45,7 @@ export class CoinDistractorComponent extends ComponentWrapper<CoinDistarctorComp
 
      setTimeout(function() 
      {
-console.log('called')
+   //console.log('called')
 
 
  

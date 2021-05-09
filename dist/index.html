@@ -46,7 +46,10 @@
      <a-entity oculus-touch-controls="hand: left"></a-entity>
      <a-entity oculus-touch-controls="hand: right" controller-cursor raycaster="objects: .coins"></a-entity>
      ---->
-
+    <a-entity id="timeTaken" time-taken></a-entity>
+    <a-entity id ="AAS" aas-component></a-entity>
+    <a-entity id = "timeResponse"  response-component></a-entity>
+    <a-entity id = "limitedInteruption" limited-interuption ></a-entity>
 
      <a-box id="box"  visible="false" depth="0.4" width = "0.4" height = "0.4" position = "0 0.1 -0.1"  class = "bTarget" ></a-box>   
      <a-box id="box1" visible="false" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 1"   class = "bTarget"></a-box> 
@@ -59,7 +62,14 @@
 
      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .coins" grab></a-entity>
       
-      <a-camera id="cam" look-controls="enabled:false" >     </a-camera>
+      <a-camera id="cam" look-controls="enabled:false"   >
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+        position="0 0 -1"
+        geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+        material="color: black; shader: flat"
+        raycaster="objects: .npc">
+</a-entity>
+      </a-camera>
       
       <a-box id="camera1" scale="0.2 0.2 0.2" position="0 1.6 -1.62446" visible = "false"></a-box>
       <a-box id="camera2" scale="0.2 0.2 0.2" visible="false" position="2.4048 1.6 2.99784" ></a-box>
@@ -78,7 +88,7 @@
           
       </a-plane>
       
-      <a-sphere id="npc" color="yellow" radius="0.25" position="-0.79606 0.2 0.73843" npc-component sound="autoplay: true; "></a-sphere>
+      <a-sphere id="npc" color="yellow" radius="0.25" position="-0.79606 0.2 0.73843" npc-component sound="autoplay: true; " class="npc" camera-component></a-sphere>
       
       <a-curve id="track11">
         <a-box  scale="0.02 0.02 0.02" position="0 0.2 -3.80892" curve-point="" visible="false" ></a-box>

@@ -29,7 +29,7 @@ var ColorComponent = /** @class */ (function (_super) {
         }) || this;
     }
     ColorComponent.prototype.init = function () {
-        alert('hiii');
+       // alert('hiii');
         var entityColor = this.el.getAttribute('color');
         entity_builder_1.EntityBuilder.create('a-text', {
             id: 'color-text',

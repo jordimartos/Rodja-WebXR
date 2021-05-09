@@ -16,7 +16,7 @@ export class Distractor1Component extends ComponentWrapper<Distractor1ComponentS
   }
 
   init() {
-   console.log('distractor exist');
+   //console.log('distractor exist');
    let newpos:any;
    let random:number=0;
    let box = document.querySelectorAll(".bTarget");//Array of targets

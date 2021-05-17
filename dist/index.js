@@ -531,7 +531,10 @@ var Distractor1Component = /** @class */function (_super) {
         //console.log('distractor exist');
         var newpos;
         var random = 0;
-        var box = document.querySelectorAll(".bTarget"); //Array of targets
+        var track = sessionStorage.getItem('road');
+        var target = ".bTarget" + track;
+        //alert(track);
+        var box = document.querySelectorAll(target); //Array of targets
         var el = this.el;
         if (sessionStorage.getItem('level') == '2' || sessionStorage.getItem('level') == '3') {
             el.setAttribute('visible', 'true');
@@ -539,15 +542,15 @@ var Distractor1Component = /** @class */function (_super) {
         var startDsMovement = function cycle(index) {
             setTimeout(function () {
                 random++;
+                if (random >= box.length) {
+                    random = 0;
+                }
                 newpos = box[random].getAttribute("position"); // restor next target for distractor
                 el.setAttribute("animation", "property:position; to:" + newpos.x + " 1 " + newpos.z + " dur:15000");
-                if (random >= box.length - 1) {
-                    random = 0; // Set it back to `0` when it reaches `4`
-                }
                 // console.log("i'm here 2")
                 cycle(random);
                 //cycle(++index % 3);
-            }, 2000);
+            }, 3000);
         };
         startDsMovement(box.length);
     };
@@ -962,7 +965,7 @@ var timeTakenComponent = /** @class */function (_super) {
         window.startTime = current.toLocaleString();
         timer = setInterval(function () {
             window.timeTaken++;
-            console.log('timeTaken' + window.timeTaken);
+            // console.log('timeTaken'+ window.timeTaken)
         }, 1000);
         el.addEventListener('stop', function () {
             clearInterval(timer);

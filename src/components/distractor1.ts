@@ -19,7 +19,10 @@ export class Distractor1Component extends ComponentWrapper<Distractor1ComponentS
    //console.log('distractor exist');
    let newpos:any;
    let random:number=0;
-   let box = document.querySelectorAll(".bTarget");//Array of targets
+     let track:string = sessionStorage.getItem('road');
+   let target:string = ".bTarget"+track; 
+   //alert(track);
+   let box = document.querySelectorAll(target);//Array of targets
    let el =this.el
 
   if(sessionStorage.getItem('level') =='2' ||sessionStorage.getItem('level') == '3')
@@ -34,7 +37,12 @@ export class Distractor1Component extends ComponentWrapper<Distractor1ComponentS
      {
 
 
- random++;  
+ random++;
+ if (random >= box.length) 
+ {
+      
+      random = 0; 
+   }  
  
   newpos=box[random].getAttribute("position");// restor next target for distractor
   
@@ -43,17 +51,13 @@ export class Distractor1Component extends ComponentWrapper<Distractor1ComponentS
  
 
        
-       if (random >= box.length-1) 
-       {
-            
-            random = 0; // Set it back to `0` when it reaches `4`
-         }
+      
         // console.log("i'm here 2")
 
          cycle(random);
    //cycle(++index % 3);
    
-     },2000);
+     },3000);
  }
 
  startDsMovement( box.length);

@@ -367,18 +367,20 @@ var CoinComponent = /** @class */function (_super) {
         var timeResponse = document.getElementById('timeResponse');
         var AAS = document.getElementById('AAS');
         var limitedInteruption = document.getElementById('limitedInteruption');
-        //console.log(nextCoin)
         el.addEventListener('mousedown', function () {
             if (data.canStart) {
                 timeResponse.setAttribute('response-component', 'canStart:false');
                 AAS.setAttribute('aas-component', 'canStart:true');
                 limitedInteruption.setAttribute('limited-interuption', 'canStart:true');
-                ////console.log('mouseDown');
-                // console.log('coin index ='+coinIndex);
-                // console.log('track' +window.track);
                 moveToNextCoin(npc, el);
                 data.canStart = false;
             }
+            el.addEventListener('animation-finished', function () {
+                if (coinIndex < 9) {
+                    el.setAttribute('visible', 'false');
+                    console.log('animation pickup finshed');
+                }
+            });
         });
     };
     CoinComponent.prototype.update = function () {};
@@ -813,13 +815,18 @@ function showNextCoin(nextCoin_el) {
     console.log("npc arrived");
     if (nextCoinIndex < 9) {
         var coin = document.getElementById(currentCoinIndex.toString() + window.track);
-        coin.setAttribute('visible', 'false');
+        coin.setAttribute('animation-mixer', 'clip:Jewel_pickup_anim');
+        coin.setAttribute('animation-mixer', 'loop:once');
         nextCoin_el.setAttribute('visible', 'true');
         nextCoin_el.setAttribute('coin-component', 'canStart:true');
         nextCoinIndex++;
         currentCoinIndex++;
     } else {
         var statictics_el_1 = document.getElementById('statistics');
+        var chest = document.getElementById(currentCoinIndex.toString() + window.track);
+        chest.setAttribute('animation-mixer', 'loop:once');
+        chest.setAttribute('animation-mixer', 'clampWhenFinished:true');
+        chest.setAttribute('animation-mixer', 'timeScale:0.5');
         setTimeout(function () {
             statictics_el_1.setAttribute('statistics-component', '');
         }, 5000);
@@ -906,7 +913,7 @@ var StatisticsComponent = /** @class */function (_super) {
         var date = new Date();
         allStats[date.toString()] = __assign(__assign({}, allStats[date.toString()]), { statistics: statistics });
         sessionStorage.setItem('allStats', JSON.stringify(allStats));
-        window.open('../../finalPage.html', "_self");
+        // window.open('../../finalPage.html',"_self");
     };
     StatisticsComponent.prototype.update = function () {};
     StatisticsComponent.prototype.play = function () {};

@@ -1,40 +1,73 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <style>
+        .button {
+          background-color: #6f6feb; 
+          border: none;
+          color: white;
+          padding: 12px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        
+        .button1 {border-radius: 2px;}
+        .button2 {border-radius: 4px;}
+        .button3 {border-radius: 8px;
+          background-color: #6f6feb; 
+          border: none;
+          color: white;
+          padding: 12px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        .button4 {border-radius: 12px;}
+        .button5 {border-radius: 50%;}
+        </style>
        
     </head>
 <body>
   <h>Select langauge</h>
   <br> 
-    <button class ="button" onclick="set_language('A')" >Arabic </button>
-    <button class ="button" onclick="set_language('E')">English </button>
+    <button class ="button3" onclick="set_language('A')" >Arabic </button>
+    <button class ="button3" onclick="set_language('E')">English </button>
   <br> <br> 
   <h>Select enviroment</h>
   <br>
-  <button class ="button" onclick="set_enviroment('snow')">Snow</button>
-  <button class ="button" onclick="set_enviroment('desert')" >Desert</button>
+  <button class ="button3" onclick="set_enviroment('snow')">Snow</button>
+  <button class ="button3" onclick="set_enviroment('desert')" >Desert</button>
+  <button class ="button3" onclick="set_enviroment('space')">Space</button>
+  <button class ="button3" onclick="set_enviroment('garden')">Garden</button>
   <br> <br>
   <h>Select road</h>
   <br>
-  <button class ="button" onclick="select_road(1)" >Road 1</button>
-  <button class ="button" onclick="select_road(2)" >Road 2</button>
-  <button class ="button" onclick="select_road(3)">Road 3</button>
-  <button class ="button" onclick="select_road(4)">Road 4</button>
-  <button class ="button" onclick="select_road(5)">Road 5</button>
+  <button class ="button3" onclick="select_road(1)" >Road 1</button>
+  <button class ="button3" onclick="select_road(2)" >Road 2</button>
+  <button class ="button3" onclick="select_road(3)">Road 3</button>
+  <button class ="button3" onclick="select_road(4)">Road 4</button>
+  <button class ="button3" onclick="select_road(5)">Road 5</button>
  <br> <br>
   <h>Select level</h>
   <br>
-  <button class ="button" onclick="set_level(1)" >Level 1</button>
-  <button class ="button" onclick="set_level(2)" >Level 2</button>
-  <button class ="button" onclick="set_level(3)">Level 3</button>
+  <button class ="button3" onclick="set_level(1)" >Level 1</button>
+  <button class ="button3" onclick="set_level(2)" >Level 2</button>
+  <button class ="button3" onclick="set_level(3)">Level 3</button>
  <br> <br>
      
   <h>Select npc</h>
   <br>
-  <button class ="button" onclick="set_npc('male')">Male</button>
-  <button class ="button" onclick="set_npc('female')" >Female</button>
+  <button class ="button3" onclick="set_npc('male')">Male</button>
+  <button class ="button3" onclick="set_npc('female')" >Female</button>
   <br> <br>
-  <button class ="button" onclick="start_game()" >Start</button>
+  <button class ="button3" onclick="start_game()" >Start</button>
   
 
 </body>

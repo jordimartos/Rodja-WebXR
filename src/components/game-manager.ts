@@ -39,7 +39,7 @@ export class gameManagerComponent extends ComponentWrapper<gameManagerSchema> {
    }
    catch
    {
-      alert("enviroment not selected");
+      alert(enviroment);
    }
    
   window.track = sessionStorage.getItem('road');

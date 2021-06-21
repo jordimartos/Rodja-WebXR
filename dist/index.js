@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -215,74 +215,6 @@ var __extends = this && this.__extends || function () {
     };
 }();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ASSComponent = void 0;
-var aframe_wrapper_1 = __webpack_require__(0);
-var ASSComponent = /** @class */function (_super) {
-    __extends(ASSComponent, _super);
-    function ASSComponent() {
-        return _super.call(this, 'aas-component', {
-            canStart: {
-                type: 'boolean',
-                default: false
-            },
-            canCalculate: {
-                type: 'boolean',
-                default: false
-            }
-        }) || this;
-    }
-    ASSComponent.prototype.init = function () {
-        var el = this.el;
-        var data = this.data;
-        window.timeTaken = 0;
-        var timer;
-        window.AAS = 0;
-        timer = setInterval(function () {
-            if (data.canStart && data.canCalculate) {
-                window.AAS++;
-                //  console.log('AAS'+window.AAS);
-            }
-        }, 1000);
-        el.addEventListener('stop', function () {
-            clearInterval(timer);
-        });
-    };
-    ASSComponent.prototype.update = function () {};
-    ASSComponent.prototype.play = function () {};
-    ASSComponent.prototype.pause = function () {};
-    ASSComponent.prototype.tick = function () {};
-    ASSComponent.prototype.remove = function () {};
-    ASSComponent.prototype.destroy = function () {};
-    return ASSComponent;
-}(aframe_wrapper_1.ComponentWrapper);
-exports.ASSComponent = ASSComponent;
-new ASSComponent().register();
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __extends = this && this.__extends || function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
-            d.__proto__ = b;
-        } || function (d, b) {
-            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-        };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() {
-            this.constructor = d;
-        }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-}();
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.CameraComponent = void 0;
 var aframe_wrapper_1 = __webpack_require__(0);
 var CameraComponent = /** @class */function (_super) {
@@ -298,17 +230,11 @@ var CameraComponent = /** @class */function (_super) {
     CameraComponent.prototype.init = function () {
         var el = this.el;
         var data = this.data;
-        var AAS = document.getElementById('AAS');
-        var limitedInteruption = document.getElementById('limitedInteruption');
         el.addEventListener('mouseenter', function () {
             // console.log('I can see npc ');
-            AAS.setAttribute('aas-component', 'canCalculate:true');
-            limitedInteruption.setAttribute('limited-interuption', 'canCalculate:false');
         });
         el.addEventListener('mouseleave', function () {
             // console.log('No longer can see npc ');
-            AAS.setAttribute('aas-component', 'canCalculate:false');
-            limitedInteruption.setAttribute('limited-interuption', 'canCalculate:true');
         });
     };
     CameraComponent.prototype.update = function () {};
@@ -323,7 +249,7 @@ exports.CameraComponent = CameraComponent;
 new CameraComponent().register();
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -364,14 +290,8 @@ var CoinComponent = /** @class */function (_super) {
         var el = this.el;
         var data = this.data;
         var npc = document.getElementById('npc');
-        var timeResponse = document.getElementById('timeResponse');
-        var AAS = document.getElementById('AAS');
-        var limitedInteruption = document.getElementById('limitedInteruption');
         el.addEventListener('mousedown', function () {
             if (data.canStart) {
-                timeResponse.setAttribute('response-component', 'canStart:false');
-                AAS.setAttribute('aas-component', 'canStart:true');
-                limitedInteruption.setAttribute('limited-interuption', 'canStart:true');
                 moveToNextCoin(npc, el);
                 data.canStart = false;
             }
@@ -409,7 +329,7 @@ function moveToNextCoin(npc_el, coin_el) {
 new CoinComponent().register();
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -493,7 +413,7 @@ exports.CoinDistractorComponent = CoinDistractorComponent;
 new CoinDistractorComponent().register();
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -568,7 +488,7 @@ exports.Distractor1Component = Distractor1Component;
 new Distractor1Component().register();
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -619,7 +539,7 @@ var gameManagerComponent = /** @class */function (_super) {
             enviroment_el = document.getElementById(enviroment + '-el');
             enviroment_el.setAttribute('visible', 'true');
         } catch (_a) {
-            alert("enviroment not selected");
+            alert(enviroment);
         }
         window.track = sessionStorage.getItem('road');
         console.log('track selected =' + window.track);
@@ -653,85 +573,7 @@ exports.gameManagerComponent = gameManagerComponent;
 new gameManagerComponent().register();
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __extends = this && this.__extends || function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
-            d.__proto__ = b;
-        } || function (d, b) {
-            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-        };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() {
-            this.constructor = d;
-        }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-}();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.LimitedInteruption = void 0;
-var aframe_wrapper_1 = __webpack_require__(0);
-var LimitedInteruption = /** @class */function (_super) {
-    __extends(LimitedInteruption, _super);
-    function LimitedInteruption() {
-        return _super.call(this, 'limited-interuption', {
-            taskInterupt: {
-                type: 'number',
-                default: 0
-            }, canCalculate: {
-                type: 'boolean',
-                default: false
-            }, canStart: {
-                type: 'boolean',
-                default: false
-            }
-        }) || this;
-    }
-    LimitedInteruption.prototype.init = function () {
-        var el = this.el;
-        var data = this.data;
-        var interuptionTimer = 0;
-        var timer;
-        window.tasksLimitedInterupt = 0;
-        timer = setInterval(function () {
-            if (data.canCalculate && data.canStart) {
-                interuptionTimer++;
-                if (interuptionTimer = 2) {
-                    interuptionTimer = 0;
-                    data.taskInterupt++;
-                    data.canCalculate = false;
-                    console.log('task interrupt');
-                    if (data.taskInterupt == 3) {
-                        window.tasksLimitedInterupt++;
-                        data.canStart = false;
-                        data.taskInterupt = 0;
-                        console.log('tasks limited interupt=' + window.tasksLimitedInterupt);
-                    }
-                }
-            }
-        }, 1000);
-    };
-    LimitedInteruption.prototype.update = function () {};
-    LimitedInteruption.prototype.play = function () {};
-    LimitedInteruption.prototype.pause = function () {};
-    LimitedInteruption.prototype.tick = function () {};
-    LimitedInteruption.prototype.remove = function () {};
-    LimitedInteruption.prototype.destroy = function () {};
-    return LimitedInteruption;
-}(aframe_wrapper_1.ComponentWrapper);
-exports.LimitedInteruption = LimitedInteruption;
-new LimitedInteruption().register();
-
-/***/ }),
-/* 8 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -772,13 +614,9 @@ var NPCComponent = /** @class */function (_super) {
     }
     NPCComponent.prototype.init = function () {
         var el = this.el;
-        var data = this.data;
         var startPos = document.getElementById('start' + window.track);
         var nextCoin = document.getElementById(nextCoinIndex.toString() + window.track);
-        var timeResponse = document.getElementById('timeResponse');
         var isStartVoicePlayed = false;
-        var AAS = document.getElementById('AAS');
-        var limitedInteruption = document.getElementById('limitedInteruption');
         console.log('next coin ' + nextCoinIndex);
         el.setAttribute('sound', 'src', '#welcome-sound');
         el.setAttribute('sound', 'playSound');
@@ -788,10 +626,6 @@ var NPCComponent = /** @class */function (_super) {
         el.addEventListener('movingended', function () {
             nextCoin = document.getElementById(nextCoinIndex.toString() + window.track);
             showNextCoin(nextCoin);
-            timeResponse.setAttribute('response-component', 'canStart:true');
-            AAS.setAttribute('aas-component', 'canStart:false');
-            limitedInteruption.setAttribute('limited-interuption', 'canStart:false');
-            limitedInteruption.setAttribute('limited-interuption', 'taskInterupt:0');
         });
         el.addEventListener('sound-ended', function () {
             if (!isStartVoicePlayed) {
@@ -835,276 +669,37 @@ function showNextCoin(nextCoin_el) {
 new NPCComponent().register();
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __extends = this && this.__extends || function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
-            d.__proto__ = b;
-        } || function (d, b) {
-            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-        };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() {
-            this.constructor = d;
-        }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-}();
-var __assign = this && this.__assign || function () {
-    __assign = Object.assign || function (t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatisticsComponent = void 0;
-var aframe_wrapper_1 = __webpack_require__(0);
-var StatisticsComponent = /** @class */function (_super) {
-    __extends(StatisticsComponent, _super);
-    function StatisticsComponent() {
-        return _super.call(this, 'statistics-component', {
-            canStart: {
-                type: 'boolean',
-                default: false
-            }
-        }) || this;
-    }
-    StatisticsComponent.prototype.init = function () {
-        var _totalNumberOfTasks = 8;
-        var _TAS = 8; //Attention time attained by typical child during a task (look at the npc while moving)
-        var _TypicalTime = 82; //the time taken by a typical child to finish the game
-        var _TaR; //target ratio
-        var _TiR; // time ratio
-        var statistics;
-        var _avgResponseTime;
-        var allStats = {
-            myStats: ''
-        };
-        if (sessionStorage.getItem("allStats") != null) {
-            allStats = JSON.parse(sessionStorage.getItem("allStats"));
-            console.log("all stats is" + allStats);
-        }
-        _avgResponseTime = window.TimeResponse / 8;
-        _TaR = window.tasksLimitedInterupt / _totalNumberOfTasks;
-        _TiR = window.timeTaken / _TypicalTime;
-        window.impulsivityScore = 1 / (-_TaR * (Math.log10(_TiR) - 1 + Math.E));
-        window.omissionScore = _TAS / (window.AAS + Math.E);
-        statistics = {
-            omissionScore: window.omissionScore,
-            ImpulsivityScore: window.impulsivityScore,
-            AAS: window.AAS,
-            avgResponseTime: _avgResponseTime,
-            TaR: _TaR,
-            TiR: _TiR
-        };
-        console.log(statistics);
-        var date = new Date();
-        allStats[date.toString()] = __assign(__assign({}, allStats[date.toString()]), { statistics: statistics });
-        sessionStorage.setItem('allStats', JSON.stringify(allStats));
-        // window.open('../../finalPage.html',"_self");
-    };
-    StatisticsComponent.prototype.update = function () {};
-    StatisticsComponent.prototype.play = function () {};
-    StatisticsComponent.prototype.pause = function () {};
-    StatisticsComponent.prototype.tick = function () {};
-    StatisticsComponent.prototype.remove = function () {};
-    StatisticsComponent.prototype.destroy = function () {};
-    return StatisticsComponent;
-}(aframe_wrapper_1.ComponentWrapper);
-exports.StatisticsComponent = StatisticsComponent;
-new StatisticsComponent().register();
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __extends = this && this.__extends || function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
-            d.__proto__ = b;
-        } || function (d, b) {
-            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-        };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() {
-            this.constructor = d;
-        }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-}();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.timeTakenComponent = void 0;
-var aframe_wrapper_1 = __webpack_require__(0);
-var timeTakenComponent = /** @class */function (_super) {
-    __extends(timeTakenComponent, _super);
-    function timeTakenComponent() {
-        return _super.call(this, 'time-taken', {
-            canStart: {
-                type: 'boolean',
-                default: false
-            }
-        }) || this;
-    }
-    timeTakenComponent.prototype.init = function () {
-        var el = this.el;
-        var data = this.data;
-        window.timeTaken = 0;
-        var timer;
-        var current = new Date();
-        window.startTime = current.toLocaleString();
-        timer = setInterval(function () {
-            window.timeTaken++;
-            // console.log('timeTaken'+ window.timeTaken)
-        }, 1000);
-        el.addEventListener('stop', function () {
-            clearInterval(timer);
-        });
-    };
-    timeTakenComponent.prototype.update = function () {};
-    timeTakenComponent.prototype.play = function () {};
-    timeTakenComponent.prototype.pause = function () {};
-    timeTakenComponent.prototype.tick = function () {};
-    timeTakenComponent.prototype.remove = function () {};
-    timeTakenComponent.prototype.destroy = function () {};
-    return timeTakenComponent;
-}(aframe_wrapper_1.ComponentWrapper);
-exports.timeTakenComponent = timeTakenComponent;
-new timeTakenComponent().register();
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __extends = this && this.__extends || function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
-            d.__proto__ = b;
-        } || function (d, b) {
-            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-        };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() {
-            this.constructor = d;
-        }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-}();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TimeResponseComponent = void 0;
-var aframe_wrapper_1 = __webpack_require__(0);
-var TimeResponseComponent = /** @class */function (_super) {
-    __extends(TimeResponseComponent, _super);
-    function TimeResponseComponent() {
-        return _super.call(this, 'response-component', {
-            canStart: {
-                type: 'boolean',
-                default: false
-            }
-        }) || this;
-    }
-    TimeResponseComponent.prototype.init = function () {
-        var el = this.el;
-        var data = this.data;
-        window.timeTaken = 0;
-        var timer;
-        window.TimeResponse = 0;
-        timer = setInterval(function () {
-            if (data.canStart) {
-                window.TimeResponse++;
-                //  console.log('timeResponse'+window.TimeResponse);
-            }
-        }, 1000);
-        el.addEventListener('stop', function () {
-            clearInterval(timer);
-        });
-    };
-    TimeResponseComponent.prototype.update = function () {};
-    TimeResponseComponent.prototype.play = function () {};
-    TimeResponseComponent.prototype.pause = function () {};
-    TimeResponseComponent.prototype.tick = function () {};
-    TimeResponseComponent.prototype.remove = function () {};
-    TimeResponseComponent.prototype.destroy = function () {};
-    return TimeResponseComponent;
-}(aframe_wrapper_1.ComponentWrapper);
-exports.TimeResponseComponent = TimeResponseComponent;
-new TimeResponseComponent().register();
-
-/***/ }),
-/* 12 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatisticsComponent = exports.LimitedInteruption = exports.CameraComponent = exports.TimeResponseComponent = exports.ASSComponent = exports.timeTakenComponent = exports.CoinDistractorComponent = exports.Distractor1Component = exports.gameManagerComponent = exports.CoinComponent = exports.NPCComponent = void 0;
-var npc_component_1 = __webpack_require__(8);
+exports.CameraComponent = exports.CoinDistractorComponent = exports.Distractor1Component = exports.gameManagerComponent = exports.CoinComponent = exports.NPCComponent = void 0;
+var npc_component_1 = __webpack_require__(6);
 Object.defineProperty(exports, "NPCComponent", { enumerable: true, get: function () {
     return npc_component_1.NPCComponent;
   } });
-var coin_component_1 = __webpack_require__(3);
+var coin_component_1 = __webpack_require__(2);
 Object.defineProperty(exports, "CoinComponent", { enumerable: true, get: function () {
     return coin_component_1.CoinComponent;
   } });
-var game_manager_1 = __webpack_require__(6);
+var game_manager_1 = __webpack_require__(5);
 Object.defineProperty(exports, "gameManagerComponent", { enumerable: true, get: function () {
     return game_manager_1.gameManagerComponent;
   } });
-var distractor1_1 = __webpack_require__(5);
+var distractor1_1 = __webpack_require__(4);
 Object.defineProperty(exports, "Distractor1Component", { enumerable: true, get: function () {
     return distractor1_1.Distractor1Component;
   } });
-var coin_distractor_1 = __webpack_require__(4);
+var coin_distractor_1 = __webpack_require__(3);
 Object.defineProperty(exports, "CoinDistractorComponent", { enumerable: true, get: function () {
     return coin_distractor_1.CoinDistractorComponent;
   } });
-var time_taken_1 = __webpack_require__(10);
-Object.defineProperty(exports, "timeTakenComponent", { enumerable: true, get: function () {
-    return time_taken_1.timeTakenComponent;
-  } });
-var AAS_component_1 = __webpack_require__(1);
-Object.defineProperty(exports, "ASSComponent", { enumerable: true, get: function () {
-    return AAS_component_1.ASSComponent;
-  } });
-var timeResponseComponent_1 = __webpack_require__(11);
-Object.defineProperty(exports, "TimeResponseComponent", { enumerable: true, get: function () {
-    return timeResponseComponent_1.TimeResponseComponent;
-  } });
-var camera_looking_1 = __webpack_require__(2);
+var camera_looking_1 = __webpack_require__(1);
 Object.defineProperty(exports, "CameraComponent", { enumerable: true, get: function () {
     return camera_looking_1.CameraComponent;
-  } });
-var limited_interuption_1 = __webpack_require__(7);
-Object.defineProperty(exports, "LimitedInteruption", { enumerable: true, get: function () {
-    return limited_interuption_1.LimitedInteruption;
-  } });
-var statistics_component_1 = __webpack_require__(9);
-Object.defineProperty(exports, "StatisticsComponent", { enumerable: true, get: function () {
-    return statistics_component_1.StatisticsComponent;
   } });
 
 /***/ })

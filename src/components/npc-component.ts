@@ -23,7 +23,7 @@ export class NPCComponent extends ComponentWrapper<NPCComponentSchema> {
   init() {
     let el = this.el;
     let startPos = document.getElementById('start'+window.track);
-    let nextCoin = document.getElementById(nextCoinIndex.toString()+window.track);
+    let nextCoin = document.getElementById('p'+nextCoinIndex.toString()+window.track);
     let isStartVoicePlayed:boolean = false;
    
    
@@ -40,7 +40,7 @@ export class NPCComponent extends ComponentWrapper<NPCComponentSchema> {
     console.log(el.getAttribute('position',))
 
   el.addEventListener('movingended',function(){
-    nextCoin = document.getElementById(nextCoinIndex.toString()+window.track);
+    nextCoin = document.getElementById('p'+nextCoinIndex.toString()+window.track);
     showNextCoin(nextCoin);
   })
   el.addEventListener('sound-ended',function(){
@@ -76,7 +76,7 @@ function showNextCoin(nextCoin_el:any){
  console.log("npc arrived");
  if(nextCoinIndex < 9)
  {
-  let coin = document.getElementById(currentCoinIndex.toString()+window.track);
+  let coin = document.getElementById('p'+currentCoinIndex.toString()+window.track);
   coin.setAttribute('animation-mixer','clip:Jewel_pickup_anim');
   coin.setAttribute('animation-mixer','loop:once')
   
@@ -87,7 +87,7 @@ function showNextCoin(nextCoin_el:any){
  }
  else{
   let statictics_el = document.getElementById('statistics');
-  let chest = document.getElementById(currentCoinIndex.toString()+window.track);
+  let chest = document.getElementById('p'+currentCoinIndex.toString()+window.track);
  chest.setAttribute('animation-mixer','loop:once');
  chest.setAttribute('animation-mixer','clampWhenFinished:true');
   chest.setAttribute('animation-mixer','timeScale:0.5');

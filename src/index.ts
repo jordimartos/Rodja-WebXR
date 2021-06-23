@@ -10,3 +10,6 @@ import{CoinDistractorComponent} from './components/coin-distractor';
 export{CoinDistractorComponent}
 import{CameraComponent} from './components/camera-looking';
 export{CameraComponent};
+import{NPCRotation} from './components/npc-rotation';
+export{NPCRotation}
+

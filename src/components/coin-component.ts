@@ -74,7 +74,7 @@ function moveToNextCoin(npc_el:any,coin_el:any){
   let nextCoin_el
   coinIndex ++;
   
-     nextCoin_el =document.getElementById(coinIndex.toString()+window.track);
+     nextCoin_el =document.getElementById('p'+coinIndex.toString()+window.track);
  
   
     if(coinIndex < 9 )

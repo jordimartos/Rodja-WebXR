@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -321,7 +321,7 @@ function moveToNextCoin(npc_el, coin_el) {
     npc_el.setAttribute('alongpath', 'dur', '8000');
     var nextCoin_el;
     coinIndex++;
-    nextCoin_el = document.getElementById(coinIndex.toString() + window.track);
+    nextCoin_el = document.getElementById('p' + coinIndex.toString() + window.track);
     if (coinIndex < 9) {
         nextCoin_el.setAttribute('material', 'color:blue');
     }
@@ -557,7 +557,7 @@ var gameManagerComponent = /** @class */function (_super) {
         console.log("z pos"+yPos );*/
         camera_el.setAttribute('position', camera_pos.getAttribute('position'));
         console.log(camera_pos.getAttribute('position'));
-        firstCoin = document.getElementById('1' + window.track);
+        firstCoin = document.getElementById('p' + '1' + window.track);
         firstCoin.setAttribute('visible', 'true');
         camera_el.setAttribute('look-controls', 'enabled', true);
     };
@@ -615,7 +615,7 @@ var NPCComponent = /** @class */function (_super) {
     NPCComponent.prototype.init = function () {
         var el = this.el;
         var startPos = document.getElementById('start' + window.track);
-        var nextCoin = document.getElementById(nextCoinIndex.toString() + window.track);
+        var nextCoin = document.getElementById('p' + nextCoinIndex.toString() + window.track);
         var isStartVoicePlayed = false;
         console.log('next coin ' + nextCoinIndex);
         el.setAttribute('sound', 'src', '#welcome-sound');
@@ -624,7 +624,7 @@ var NPCComponent = /** @class */function (_super) {
         console.log(startPos.getAttribute('position'));
         console.log(el.getAttribute('position'));
         el.addEventListener('movingended', function () {
-            nextCoin = document.getElementById(nextCoinIndex.toString() + window.track);
+            nextCoin = document.getElementById('p' + nextCoinIndex.toString() + window.track);
             showNextCoin(nextCoin);
         });
         el.addEventListener('sound-ended', function () {
@@ -648,7 +648,7 @@ exports.NPCComponent = NPCComponent;
 function showNextCoin(nextCoin_el) {
     console.log("npc arrived");
     if (nextCoinIndex < 9) {
-        var coin = document.getElementById(currentCoinIndex.toString() + window.track);
+        var coin = document.getElementById('p' + currentCoinIndex.toString() + window.track);
         coin.setAttribute('animation-mixer', 'clip:Jewel_pickup_anim');
         coin.setAttribute('animation-mixer', 'loop:once');
         nextCoin_el.setAttribute('visible', 'true');
@@ -657,7 +657,7 @@ function showNextCoin(nextCoin_el) {
         currentCoinIndex++;
     } else {
         var statictics_el_1 = document.getElementById('statistics');
-        var chest = document.getElementById(currentCoinIndex.toString() + window.track);
+        var chest = document.getElementById('p' + currentCoinIndex.toString() + window.track);
         chest.setAttribute('animation-mixer', 'loop:once');
         chest.setAttribute('animation-mixer', 'clampWhenFinished:true');
         chest.setAttribute('animation-mixer', 'timeScale:0.5');
@@ -675,8 +675,71 @@ new NPCComponent().register();
 "use strict";
 
 
+var __extends = this && this.__extends || function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+            d.__proto__ = b;
+        } || function (d, b) {
+            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CameraComponent = exports.CoinDistractorComponent = exports.Distractor1Component = exports.gameManagerComponent = exports.CoinComponent = exports.NPCComponent = void 0;
+exports.NPCRotation = void 0;
+var aframe_wrapper_1 = __webpack_require__(0);
+var currentCoinIndex = 1;
+var NPCRotation = /** @class */function (_super) {
+    __extends(NPCRotation, _super);
+    function NPCRotation() {
+        return _super.call(this, 'npc-rotation', {
+            canStart: {
+                type: 'boolean',
+                default: false
+            }
+        }) || this;
+    }
+    NPCRotation.prototype.init = function () {
+        var el = this.el;
+        var nextCoin;
+        var magnitude;
+        el.setAttribute('look-at', '#p11');
+        el.addEventListener('movingended', function () {
+            currentCoinIndex++;
+            if (currentCoinIndex < 9) {
+                el.setAttribute('look-at', '#p' + currentCoinIndex.toString() + window.track);
+                console.log('rotation updated');
+            }
+        });
+    };
+    NPCRotation.prototype.update = function () {};
+    NPCRotation.prototype.play = function () {};
+    NPCRotation.prototype.pause = function () {};
+    NPCRotation.prototype.tick = function () {};
+    NPCRotation.prototype.remove = function () {};
+    NPCRotation.prototype.destroy = function () {};
+    return NPCRotation;
+}(aframe_wrapper_1.ComponentWrapper);
+exports.NPCRotation = NPCRotation;
+function showNextCoin(nextCoin_el) {}
+new NPCRotation().register();
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NPCRotation = exports.CameraComponent = exports.CoinDistractorComponent = exports.Distractor1Component = exports.gameManagerComponent = exports.CoinComponent = exports.NPCComponent = void 0;
 var npc_component_1 = __webpack_require__(6);
 Object.defineProperty(exports, "NPCComponent", { enumerable: true, get: function () {
     return npc_component_1.NPCComponent;
@@ -700,6 +763,10 @@ Object.defineProperty(exports, "CoinDistractorComponent", { enumerable: true, ge
 var camera_looking_1 = __webpack_require__(1);
 Object.defineProperty(exports, "CameraComponent", { enumerable: true, get: function () {
     return camera_looking_1.CameraComponent;
+  } });
+var npc_rotation_1 = __webpack_require__(7);
+Object.defineProperty(exports, "NPCRotation", { enumerable: true, get: function () {
+    return npc_rotation_1.NPCRotation;
   } });
 
 /***/ })

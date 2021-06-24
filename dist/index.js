@@ -656,14 +656,16 @@ function showNextCoin(nextCoin_el) {
         nextCoinIndex++;
         currentCoinIndex++;
     } else {
-        var statictics_el_1 = document.getElementById('statistics');
         var chest = document.getElementById('p' + currentCoinIndex.toString() + window.track);
         chest.setAttribute('animation-mixer', 'loop:once');
         chest.setAttribute('animation-mixer', 'clampWhenFinished:true');
         chest.setAttribute('animation-mixer', 'timeScale:0.5');
-        setTimeout(function () {
-            statictics_el_1.setAttribute('statistics-component', '');
-        }, 5000);
+        /*
+        setTimeout(function ()
+        
+        {
+          
+        }, 5000);*/
     }
 }
 new NPCComponent().register();
@@ -710,11 +712,11 @@ var NPCRotation = /** @class */function (_super) {
         var el = this.el;
         var nextCoin;
         var magnitude;
-        el.setAttribute('look-at', '#p11');
+        el.setAttribute('look-at', '#R' + currentCoinIndex.toString() + window.track);
         el.addEventListener('movingended', function () {
             currentCoinIndex++;
             if (currentCoinIndex < 9) {
-                el.setAttribute('look-at', '#p' + currentCoinIndex.toString() + window.track);
+                el.setAttribute('look-at', '#R' + currentCoinIndex.toString() + window.track);
                 console.log('rotation updated');
             }
         });

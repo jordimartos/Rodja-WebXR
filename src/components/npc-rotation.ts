@@ -23,15 +23,15 @@ export class NPCRotation extends ComponentWrapper<NPCRotattionSchema> {
     let nextCoin:any;
    
     let magnitude :number;
-    el.setAttribute('look-at','#p11');
+    
    
-
+    el.setAttribute('look-at','#R'+currentCoinIndex.toString()+window.track);
   el.addEventListener('movingended',function(){
     
     currentCoinIndex ++;
    if (currentCoinIndex < 9)
    {
-    el.setAttribute('look-at','#p'+currentCoinIndex.toString()+window.track);
+    el.setAttribute('look-at','#R'+currentCoinIndex.toString()+window.track);
     console.log('rotation updated');
    }
   

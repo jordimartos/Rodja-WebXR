@@ -86,17 +86,17 @@ function showNextCoin(nextCoin_el:any){
   currentCoinIndex ++;
  }
  else{
-  let statictics_el = document.getElementById('statistics');
+  
   let chest = document.getElementById('p'+currentCoinIndex.toString()+window.track);
  chest.setAttribute('animation-mixer','loop:once');
  chest.setAttribute('animation-mixer','clampWhenFinished:true');
   chest.setAttribute('animation-mixer','timeScale:0.5');
-  
+  /*
   setTimeout(function () 
   
   {
-    statictics_el.setAttribute('statistics-component','');
-  }, 5000);
+    
+  }, 5000);*/
   
  }
  

@@ -617,20 +617,23 @@ var NPCComponent = /** @class */function (_super) {
         var startPos = document.getElementById('start' + window.track);
         var nextCoin = document.getElementById('p' + nextCoinIndex.toString() + window.track);
         var isStartVoicePlayed = false;
+        var language = sessionStorage.getItem('langauage');
+        var npc = sessionStorage.getItem('npc');
         console.log('next coin ' + nextCoinIndex);
-        el.setAttribute('sound', 'src', '#welcome-sound');
+        el.setAttribute('sound', 'src', '#welcome-soundA' + npc);
         el.setAttribute('sound', 'playSound');
         el.setAttribute('position', startPos.getAttribute('position'));
         console.log(startPos.getAttribute('position'));
         console.log(el.getAttribute('position'));
         el.addEventListener('movingended', function () {
             nextCoin = document.getElementById('p' + nextCoinIndex.toString() + window.track);
-            showNextCoin(nextCoin);
+            showNextCoin(nextCoin, el);
+            if (nextCoinIndex > 8) {}
         });
         el.addEventListener('sound-ended', function () {
             if (!isStartVoicePlayed) {
-                console.log('yalla');
-                el.setAttribute('sound', 'src', '#ready-sound');
+                console.log('ready');
+                el.setAttribute('sound', 'src', '#ready-sound' + 'A' + npc);
                 el.setAttribute('sound', 'playSound');
                 isStartVoicePlayed = true;
             }
@@ -645,7 +648,7 @@ var NPCComponent = /** @class */function (_super) {
     return NPCComponent;
 }(aframe_wrapper_1.ComponentWrapper);
 exports.NPCComponent = NPCComponent;
-function showNextCoin(nextCoin_el) {
+function showNextCoin(nextCoin_el, el) {
     console.log("npc arrived");
     if (nextCoinIndex < 9) {
         var coin = document.getElementById('p' + currentCoinIndex.toString() + window.track);
@@ -657,6 +660,9 @@ function showNextCoin(nextCoin_el) {
         currentCoinIndex++;
     } else {
         var chest = document.getElementById('p' + currentCoinIndex.toString() + window.track);
+        var npc = sessionStorage.getItem('npc');
+        el.setAttribute('sound', 'src', '#bravo-sound' + 'A' + npc);
+        el.setAttribute('sound', 'playSound');
         chest.setAttribute('animation-mixer', 'loop:once');
         chest.setAttribute('animation-mixer', 'clampWhenFinished:true');
         chest.setAttribute('animation-mixer', 'timeScale:0.5');

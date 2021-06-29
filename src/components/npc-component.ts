@@ -25,12 +25,13 @@ export class NPCComponent extends ComponentWrapper<NPCComponentSchema> {
     let startPos = document.getElementById('start'+window.track);
     let nextCoin = document.getElementById('p'+nextCoinIndex.toString()+window.track);
     let isStartVoicePlayed:boolean = false;
-   
+    let language:string = sessionStorage.getItem('langauage');
+    let npc:string = sessionStorage.getItem('npc');
    
     
     
     console.log('next coin '+nextCoinIndex)
-    el.setAttribute('sound','src','#welcome-sound');
+    el.setAttribute('sound','src','#welcome-soundA'+npc);
     el.setAttribute('sound','playSound');
    
    
@@ -41,14 +42,18 @@ export class NPCComponent extends ComponentWrapper<NPCComponentSchema> {
 
   el.addEventListener('movingended',function(){
     nextCoin = document.getElementById('p'+nextCoinIndex.toString()+window.track);
-    showNextCoin(nextCoin);
+    showNextCoin(nextCoin,el);
+    if(nextCoinIndex > 8){
+      
+    }
+    
   })
   el.addEventListener('sound-ended',function(){
     if(!isStartVoicePlayed)
     {
       
-      console.log('yalla');
-      el.setAttribute('sound','src','#ready-sound');
+      console.log('ready');
+      el.setAttribute('sound','src','#ready-sound'+'A'+npc);
     el.setAttribute('sound','playSound');
     isStartVoicePlayed = true;
     }
@@ -72,7 +77,7 @@ export class NPCComponent extends ComponentWrapper<NPCComponentSchema> {
 }
 
 
-function showNextCoin(nextCoin_el:any){
+function showNextCoin(nextCoin_el:any,el:any){
  console.log("npc arrived");
  if(nextCoinIndex < 9)
  {
@@ -82,12 +87,17 @@ function showNextCoin(nextCoin_el:any){
   
   nextCoin_el.setAttribute('visible','true');
   nextCoin_el.setAttribute('coin-component','canStart:true');
+  
   nextCoinIndex ++;
   currentCoinIndex ++;
  }
  else{
   
   let chest = document.getElementById('p'+currentCoinIndex.toString()+window.track);
+  let npc:string = sessionStorage.getItem('npc');
+ 
+ el.setAttribute('sound','src','#bravo-sound'+'A'+npc);
+ el.setAttribute('sound','playSound');
  chest.setAttribute('animation-mixer','loop:once');
  chest.setAttribute('animation-mixer','clampWhenFinished:true');
   chest.setAttribute('animation-mixer','timeScale:0.5');

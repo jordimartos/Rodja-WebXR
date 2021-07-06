@@ -50,7 +50,7 @@ export class CoinDistractorComponent extends ComponentWrapper<CoinDistarctorComp
 
  
   newpos=targets[random].getAttribute("position");
-  el.setAttribute("animation","property:position; to:"+newpos.x+" 0.2 "+newpos.z+" dur:2000"); 
+  el.setAttribute("animation","property:position; to:"+newpos.x+" 0.060 "+newpos.z+" dur:2000"); 
  
   
       

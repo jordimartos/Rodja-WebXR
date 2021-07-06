@@ -294,6 +294,8 @@ var CoinComponent = /** @class */function (_super) {
             if (data.canStart) {
                 moveToNextCoin(npc, el);
                 data.canStart = false;
+                el.setAttribute('sound', 'src', '#point-sound');
+                el.setAttribute('sound', 'playSound');
             }
             el.addEventListener('animation-finished', function () {
                 if (coinIndex < 9) {
@@ -388,7 +390,7 @@ var CoinDistractorComponent = /** @class */function (_super) {
             setTimeout(function () {
                 //console.log('called')
                 newpos = targets[random].getAttribute("position");
-                el.setAttribute("animation", "property:position; to:" + newpos.x + " 0.2 " + newpos.z + " dur:2000");
+                el.setAttribute("animation", "property:position; to:" + newpos.x + " 0.060 " + newpos.z + " dur:2000");
                 if (random == 0) {
                     random = 1;
                 } else {

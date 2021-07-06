@@ -46,7 +46,7 @@
     </a-assets>
         <a-asset-itme id="bravo-soundAH" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Fbravo%20hussien.mp3?v=1624976515680"></a-asset-itme>
         <a-asset-itme id="bravo-soundARe" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Freem_bravo.mp3?v=1624976812400"></a-asset-itme>
-
+        <a-asset-item id="point-sound" src="https://cdn.glitch.com/a3713f55-7c00-466d-9a46-6bc7b1d06bd9%2Fcollect_jwelery.wav?v=1624977898776"></a-asset-item>
         <a-asset-item id="butterfly" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2FButterfly.glb?v=1607868452056"></a-asset-item>
         <a-asset-item id="jewelry1" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FRodja_prop_jewl01_v1.01.glb?v=1621382642246"></a-asset-item>
         <a-asset-item id="jewelry2" src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FRodja_prop_jewl02_v1.01.glb?v=1621171959266"></a-asset-item>
@@ -63,7 +63,7 @@
         <a-gltf-model id="road4-el" src="#road4" visible="false"></a-gltf-model>
         <a-gltf-model id="road5-el" src="#road5" visible="false"></a-gltf-model>
        
-     <a-entity oculus-touch-controls="hand: left"></a-entity>
+     <a-entity oculus-touch-controls="hand: left" controller-cursor raycaster="objects: .coins"></a-entity>
      <a-entity oculus-touch-controls="hand: right" controller-cursor raycaster="objects: .coins"></a-entity>
 
 
@@ -106,11 +106,10 @@
 
         <a-gltf-model id="distractor1" src="#butterfly" animation-mixer distrctor1-component scale="4 4 4" visible="false"></a-gltf-model>
 
-        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .coins" grab></a-entity>
+       
 
         <a-camera id="cam" look-controls="enabled:false">
-            <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat" raycaster="objects: .npc">
-            </a-entity>
+            
         </a-camera>
 
         <a-box id="camera1" scale="0.2 0.2 0.2" position="0 1.6 -1.62446" visible="false"></a-box>
@@ -209,8 +208,8 @@
             <a-box scale="0.02 0.02 0.02" position="3.48094 0.2 -3.63516" curve-point="" visible="false"></a-box>
             <a-box scale="0.25 0.25 0.25" id ="R81" position="2.3174 0.060 -3.76813"  visible="false" ></a-box>
             <a-gltf-model src="#chest" id="p81" animation-mixer="timeScale:0" position="2.3174 0.060 -3.76813" rotation="0 90 0" coin-component="" curve-point="" class="coins" coin-distractor="myNumber:8;myTrack:1" visible="false"></a-gltf-model>
-            <a-box scale="0.25 0.25 0.25" position="2.3174 0.2 -3.47159" visible="false" class="target81"></a-box>
-            <a-box scale="0.25 0.25 0.25" position="2.3174 0.2 -4.25236" visible="false" class="target81"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="2.3174 0.060 -3.47159" visible="false" class="target81"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="2.3174 0.060 -4.25236" visible="false" class="target81"></a-box>
         </a-curve>
 
 
@@ -284,8 +283,8 @@
             <a-box scale="0.02 0.02 0.02" position="6.83168 0.2 -1.77925" curve-point="" visible="false"></a-box>
             <a-box scale="0.25 0.25 0.25" id ="R82" position="4.88105 0.060 -1.13639" visible="false" ></a-box>
             <a-gltf-model src="#chest" id="p82" position="4.88105 0.060 -1.13639" animation-mixer="timeScale:0" coin-component="" curve-point="" class="coins" rotation="0 90 0" visible='false' coin-distractor="myNumber:8;myTrack:2" ></a-gltf-model>
-            <a-box scale="0.25 0.25 0.25" position="4.92287 0.2 -0.68333" visible="false" class="target82"></a-box>
-            <a-box scale="0.25 0.25 0.25" position="4.88105 0.2 -1.36335" visible="false" class="target82"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="4.92287 0.060 -0.68333" visible="false" class="target82"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="4.88105 0.060 -1.36335" visible="false" class="target82"></a-box>
         </a-curve>
 
         <!------track 3> --->
@@ -358,8 +357,8 @@
             <a-box scale="0.02 0.02 0.02" position="4.72727 0.2 -4.27264" curve-point="" visible="false" material="" geometry=""></a-box>
             <a-box scale="0.25 0.25 0.25" id ="R83" position="3.34818 0.060 -2.52103"  visible="false" ></a-box>
             <a-gltf-model src="#chest" id="p83" position="3.34818 0.060 -2.52103" animation-mixer="timeScale:0" coin-component="" coin-distractor="myNumber:8;myTrack:3" rotation="0 132.360 0" curve-point="" class="coins" visible="false" ></a-gltf-model>
-            <a-box scale="0.25 0.25 0.25" position="3.60959 0.2 -2.27593" visible="false" class="target83"></a-box>
-            <a-box scale="0.25 0.25 0.25" position="3.04532 0.2 -2.69093" visible="false" class="target83"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="3.60959 0.060 -2.27593" visible="false" class="target83"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="3.04532 0.060 -2.69093" visible="false" class="target83"></a-box>
         </a-curve>
 
         <!-------track 4>--->
@@ -432,9 +431,9 @@
             <a-box scale="0.02 0.02 0.02" position="6.72945 0.2 -3.70004" curve-point visible="false"></a-box>
             <a-box scale="0.02 0.02 0.02" position="4.72727 0.2 -4.27264" curve-point="" visible="false" material="" geometry=""></a-box>
             <a-box scale="0.25 0.25 0.25" id ="R84" position="1.45586 0.060 -4.02881"  visible="false" ></a-box>
-            <a-gltf-model src="#chest" id="p84" position="1.45586 0.060 -4.02881" animation-mixer="timeScale:0" coin-component="" rotation="0 100 0" coin-distractor="myNumber:8;myTrack:4" curve-point="" class="coins" visible="false" ></a-gltf-model>
-            <a-box scale="0.25 0.25 0.25" position="1.6697 0.2 -3.61928" visible="false" class="target84"></a-box>
-            <a-box scale="0.25 0.25 0.25" position="1.23674 0.2 -4.32663" visible="false" class="target84"></a-box>
+            <a-gltf-model src="#chest" id="p84" position="1.18359 0.06 -3.28966"  animation-mixer="timeScale:0" coin-component="" rotation="0 133.14507834809098 0" coin-distractor="myNumber:8;myTrack:4" curve-point="" class="coins" visible="false" ></a-gltf-model>
+            <a-box scale="0.25 0.25 0.25" position="1.41455 0.06 -3.00159" visible="false" class="target84"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="0.4872 0.06 -3.67926" visible="false" class="target84"></a-box>
         </a-curve>
         --->
         <!--------track5-->
@@ -509,8 +508,8 @@
             <a-box scale="0.02 0.02 0.02" position="3.81671 0.2 -4.72585" curve-point="" visible="false"></a-box>
             <a-box scale="0.25 0.25 0.25" id ="R85" position="3.65007 0.060 -2.94997" visible="false" ></a-box>
             <a-gltf-model src="#chest" id="p85" position="3.65007 0.060 -2.94997" rotation="0 180 0" animation-mixer="timeScale:0" coin-component="" coin-distractor="myNumber:8;myTrack:5" curve-point="" class="coins" visible="false"></a-gltf-model>
-            <a-box scale="0.25 0.25 0.25" position="3.32319 0.2 -2.94997" visible="false" class="target85"></a-box>
-            <a-box scale="0.25 0.25 0.25" position="4.03276 0.2 -2.94997" visible="false" class="target85"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="3.32319 0.060 -2.94997" visible="false" class="target85"></a-box>
+            <a-box scale="0.25 0.25 0.25" position="4.03276 0.060 -2.94997" visible="false" class="target85"></a-box>
         </a-curve>
 
         <a-sky></a-sky>

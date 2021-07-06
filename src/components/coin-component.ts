@@ -31,7 +31,8 @@ export class CoinComponent extends ComponentWrapper<CoinComponentSchema> {
     
      moveToNextCoin(npc , el);
      data.canStart = false;
-     
+     el.setAttribute('sound','src','#point-sound');
+     el.setAttribute('sound','playSound');
    }
    el.addEventListener('animation-finished',function () {
      if(coinIndex < 9)

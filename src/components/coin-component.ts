@@ -28,11 +28,10 @@ export class CoinComponent extends ComponentWrapper<CoinComponentSchema> {
   el.addEventListener('mousedown',function(){
    if(data.canStart)
    { 
-    
-     moveToNextCoin(npc , el);
-     data.canStart = false;
-     el.setAttribute('sound','src','#point-sound');
-     el.setAttribute('sound','playSound');
+    data.canStart = false;
+     moveToNextCoin(npc , el);   
+   //  el.setAttribute('sound','src','#point-sound');
+   //  el.setAttribute('sound','playSound');
    }
    el.addEventListener('animation-finished',function () {
      if(coinIndex < 9)

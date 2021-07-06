@@ -292,10 +292,10 @@ var CoinComponent = /** @class */function (_super) {
         var npc = document.getElementById('npc');
         el.addEventListener('mousedown', function () {
             if (data.canStart) {
-                moveToNextCoin(npc, el);
                 data.canStart = false;
-                el.setAttribute('sound', 'src', '#point-sound');
-                el.setAttribute('sound', 'playSound');
+                moveToNextCoin(npc, el);
+                //  el.setAttribute('sound','src','#point-sound');
+                //  el.setAttribute('sound','playSound');
             }
             el.addEventListener('animation-finished', function () {
                 if (coinIndex < 9) {
@@ -561,6 +561,7 @@ var gameManagerComponent = /** @class */function (_super) {
         console.log(camera_pos.getAttribute('position'));
         firstCoin = document.getElementById('p' + '1' + window.track);
         firstCoin.setAttribute('visible', 'true');
+        firstCoin.setAttribute('coin-component', 'canStart:true');
         camera_el.setAttribute('look-controls', 'enabled', true);
     };
     gameManagerComponent.prototype.update = function () {};

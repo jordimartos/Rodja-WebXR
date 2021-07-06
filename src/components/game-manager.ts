@@ -61,6 +61,7 @@ export class gameManagerComponent extends ComponentWrapper<gameManagerSchema> {
    console.log(camera_pos.getAttribute('position'));
    firstCoin = document.getElementById('p'+'1'+window.track);
    firstCoin.setAttribute('visible','true');
+   firstCoin.setAttribute('coin-component','canStart:true');
    camera_el.setAttribute('look-controls', 'enabled', true)
   }
 

@@ -535,7 +535,7 @@ var gameManagerComponent = /** @class */function (_super) {
         var enviroment_el;
         var road_el;
         var camera_el = document.getElementById('cam');
-        var camera_pos;
+        //let camera_pos:any;
         var firstCoin;
         try {
             enviroment_el = document.getElementById(enviroment + '-el');
@@ -551,14 +551,14 @@ var gameManagerComponent = /** @class */function (_super) {
         } catch (_b) {
             alert('road not selected');
         }
-        camera_pos = document.getElementById("camera" + window.track);
+        //camera_pos = document.getElementById("camera"+window.track);
         /*
         let yPos = camera_pos.object3D.position.y ;
         console.log("y pos"+yPos );
         let zPos = camera_pos.object3D.position.z ;
         console.log("z pos"+yPos );*/
-        camera_el.setAttribute('position', camera_pos.getAttribute('position'));
-        console.log(camera_pos.getAttribute('position'));
+        //camera_el.setAttribute('position', camera_pos.getAttribute('position'));
+        //console.log(camera_pos.getAttribute('position'));
         firstCoin = document.getElementById('p' + '1' + window.track);
         firstCoin.setAttribute('visible', 'true');
         firstCoin.setAttribute('coin-component', 'canStart:true');

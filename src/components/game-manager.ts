@@ -30,7 +30,7 @@ export class gameManagerComponent extends ComponentWrapper<gameManagerSchema> {
    let enviroment_el;
    let road_el;
    let camera_el:any = document.getElementById('cam');
-   let camera_pos:any;
+   //let camera_pos:any;
    let firstCoin;
    try
    {
@@ -51,14 +51,14 @@ export class gameManagerComponent extends ComponentWrapper<gameManagerSchema> {
   catch{
     alert('road not selected');
   }
-   camera_pos = document.getElementById("camera"+window.track);
+   //camera_pos = document.getElementById("camera"+window.track);
    /*
    let yPos = camera_pos.object3D.position.y ;
    console.log("y pos"+yPos );
    let zPos = camera_pos.object3D.position.z ;
    console.log("z pos"+yPos );*/
-   camera_el.setAttribute('position', camera_pos.getAttribute('position'));
-   console.log(camera_pos.getAttribute('position'));
+   //camera_el.setAttribute('position', camera_pos.getAttribute('position'));
+   //console.log(camera_pos.getAttribute('position'));
    firstCoin = document.getElementById('p'+'1'+window.track);
    firstCoin.setAttribute('visible','true');
    firstCoin.setAttribute('coin-component','canStart:true');

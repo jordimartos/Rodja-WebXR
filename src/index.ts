@@ -12,4 +12,6 @@ import{CameraComponent} from './components/camera-looking';
 export{CameraComponent};
 import{NPCRotation} from './components/npc-rotation';
 export{NPCRotation}
+import{CameraFrustumComponent} from'./components/CameraFrastum'
+export{CameraFrustumComponent}
 

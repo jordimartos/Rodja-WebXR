@@ -1,13 +1,8 @@
 import { ComponentWrapper } from '../essential/aframe-wrapper';
-declare global {
-    interface Window {
-        coin: any;
-    }
+interface CameraFrustumComponentSchema {
+    canSee: string;
 }
-interface NPCComponentSchema {
-    readonly canStart: boolean;
-}
-export declare class NPCComponent extends ComponentWrapper<NPCComponentSchema> {
+export declare class CameraFrustumComponent extends ComponentWrapper<CameraFrustumComponentSchema> {
     constructor();
     init(): void;
     update(): void;

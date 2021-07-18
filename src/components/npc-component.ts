@@ -1,7 +1,11 @@
 import {ComponentWrapper} from '../essential/aframe-wrapper';
 import {EntityBuilder} from '../essential/entity-builder';
 
+declare global {
+  interface Window { coin: any; }
+}
 
+window.coin = window.coin || {};
 
 let nextCoinIndex =2;
 let coinMaxNumber = 3;
@@ -27,7 +31,7 @@ export class NPCComponent extends ComponentWrapper<NPCComponentSchema> {
     let isStartVoicePlayed:boolean = false;
     let language:string = sessionStorage.getItem('langauage');
     let npc:string = sessionStorage.getItem('npc');
-   
+    window.coin = 1;
     
     
     console.log('next coin '+nextCoinIndex)
@@ -90,6 +94,7 @@ function showNextCoin(nextCoin_el:any,el:any){
   
   nextCoinIndex ++;
   currentCoinIndex ++;
+  window.coin++;
  }
  else{
   

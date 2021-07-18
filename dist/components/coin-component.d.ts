@@ -1,4 +1,9 @@
 import { ComponentWrapper } from '../essential/aframe-wrapper';
+declare global {
+    interface Window {
+        isLooking: boolean;
+    }
+}
 interface CoinComponentSchema {
     canStart: boolean;
 }

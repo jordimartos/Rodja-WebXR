@@ -2,7 +2,10 @@ import {ComponentWrapper} from '../essential/aframe-wrapper';
 import {EntityBuilder} from '../essential/entity-builder';
 
 let coinIndex  = 1;
-
+declare global {
+  interface Window { isLooking: boolean; }
+}
+window.isLooking =false;
 interface CoinComponentSchema {
    canStart: boolean;
 }
@@ -26,7 +29,7 @@ export class CoinComponent extends ComponentWrapper<CoinComponentSchema> {
    
 
   el.addEventListener('mousedown',function(){
-   if(data.canStart)
+   if(data.canStart&&window.isLooking)
    { 
     data.canStart = false;
      moveToNextCoin(npc , el);   
@@ -53,7 +56,10 @@ export class CoinComponent extends ComponentWrapper<CoinComponentSchema> {
 
   pause() {}
 
-  tick() {}
+  tick() {
+
+    
+  }
 
   remove() {}
 

@@ -233,7 +233,6 @@ var CameraFrustumComponent = /** @class */function (_super) {
         var countDown = setInterval(function () {
             if (_this.el.sceneEl.camera) {
                 var cam = _this.el.sceneEl.camera;
-                console.log(cam.projectionMatrix);
                 var frustum = new THREE.Frustum();
                 frustum.setFromProjectionMatrix(new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse));
                 var jewlery = document.getElementById('p' + window.coin.toString() + window.track).getAttribute('position');
@@ -348,6 +347,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CoinComponent = void 0;
 var aframe_wrapper_1 = __webpack_require__(0);
 var coinIndex = 1;
+window.isLooking = false;
 var CoinComponent = /** @class */function (_super) {
     __extends(CoinComponent, _super);
     function CoinComponent() {
@@ -363,7 +363,7 @@ var CoinComponent = /** @class */function (_super) {
         var data = this.data;
         var npc = document.getElementById('npc');
         el.addEventListener('mousedown', function () {
-            if (data.canStart) {
+            if (data.canStart && window.isLooking) {
                 data.canStart = false;
                 moveToNextCoin(npc, el);
                 //  el.setAttribute('sound','src','#point-sound');
@@ -380,7 +380,13 @@ var CoinComponent = /** @class */function (_super) {
     CoinComponent.prototype.update = function () {};
     CoinComponent.prototype.play = function () {};
     CoinComponent.prototype.pause = function () {};
-    CoinComponent.prototype.tick = function () {};
+    CoinComponent.prototype.tick = function () {
+        if (window.isLooking) {
+            console.log("coin is looking");
+        } else {
+            console.log("coin is not looking");
+        }
+    };
     CoinComponent.prototype.remove = function () {};
     CoinComponent.prototype.destroy = function () {};
     return CoinComponent;

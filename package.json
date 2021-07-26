@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "main": "dist/indexnpm.html",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js  --progress --profile --color --display-error-details --display-cached --bail",
-    "start-dev": " live-server  --no-browser",
+    "build": "npm run fix && cross-env NODE_ENV=production webpack --config ./webpack.config.js  --progress --profile --color --display-error-details --display-cached --bail",
+    "start:dev": " live-server  --no-browser",
     "lint": "gts lint **/*.ts",
     "clean": "gts clean **/*.ts",
-    "fix": "gts fix **/*.ts",
-    "dev": "live-server --port=3000 --open=index.html"
+    "fix": "gts fix **/*.ts"
   },
   "devDependencies": {
+    "all-contributors-cli": "^6.20.0",
     "awesome-typescript-loader": "^3.2.1",
     "cross-env": "^5.0.1",
     "gts": "^3.1.0",

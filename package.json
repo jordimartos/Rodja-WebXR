@@ -16,7 +16,7 @@
     "gts": "^3.1.0",
     "html-webpack-injector": "^1.1.4",
     "html-webpack-plugin": "^2.29.0",
-    "karma": "^1.7.0",
+    "karma": "^6.4.3",
     "rimraf": "^2.6.1",
     "source-map-loader": "^0.2.1",
     "three": "^0.126.0",
